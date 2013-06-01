@@ -1,0 +1,10 @@
+-I- Waiting ...
+-I- TCL platform : Windows NT
+-I- SAM-BA 2.12  on : windows
+current connection is \USBserial\COM17, \\USBserial\\COM17 to be matched 
+-I- Retrieved arguments from command line :
+-I- argv 0 : \USBserial\COM17
+-I- argv 1 : XXX-EK
+-I- argv 2 : bootfiles\dummy.tcl
+-E- Connection \USBserial\COM17 not found
+-E- Connection list : COM1 COM2
