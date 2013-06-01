@@ -120,7 +120,7 @@ C_SRCS +=  \
 ../src/asf/sam/utils/cmsis/sam3s8/source/templates/system_sam3sd8.c \
 ../src/I2CdevWrapper.c \
 ../src/MPU9150.c \
-../src/zepplin_fc.c \
+../src/zeppelin_fc.c \
 ../src/asf/common/components/memory/sd_mmc/sd_mmc.c \
 ../src/asf/common/services/clock/sam3s/sysclk.c \
 ../src/asf/common/services/delay/sam/cycle_counter.c \
@@ -166,7 +166,7 @@ src/asf/sam/utils/cmsis/sam3s8/source/templates/gcc/startup_sam3sd8.o \
 src/asf/sam/utils/cmsis/sam3s8/source/templates/system_sam3sd8.o \
 src/I2CdevWrapper.o \
 src/MPU9150.o \
-src/zepplin_fc.o \
+src/zeppelin_fc.o \
 src/asf/common/components/memory/sd_mmc/sd_mmc.o \
 src/asf/common/services/clock/sam3s/sysclk.o \
 src/asf/common/services/delay/sam/cycle_counter.o \
@@ -206,7 +206,7 @@ src/asf/sam/utils/cmsis/sam3s8/source/templates/gcc/startup_sam3sd8.o \
 src/asf/sam/utils/cmsis/sam3s8/source/templates/system_sam3sd8.o \
 src/I2CdevWrapper.o \
 src/MPU9150.o \
-src/zepplin_fc.o \
+src/zeppelin_fc.o \
 src/asf/common/components/memory/sd_mmc/sd_mmc.o \
 src/asf/common/services/clock/sam3s/sysclk.o \
 src/asf/common/services/delay/sam/cycle_counter.o \
@@ -246,7 +246,7 @@ src/asf/sam/utils/cmsis/sam3s8/source/templates/gcc/startup_sam3sd8.d \
 src/asf/sam/utils/cmsis/sam3s8/source/templates/system_sam3sd8.d \
 src/I2CdevWrapper.d \
 src/MPU9150.d \
-src/zepplin_fc.d \
+src/zeppelin_fc.d \
 src/asf/common/components/memory/sd_mmc/sd_mmc.d \
 src/asf/common/services/clock/sam3s/sysclk.d \
 src/asf/common/services/delay/sam/cycle_counter.d \
@@ -286,7 +286,7 @@ src/asf/sam/utils/cmsis/sam3s8/source/templates/gcc/startup_sam3sd8.d \
 src/asf/sam/utils/cmsis/sam3s8/source/templates/system_sam3sd8.d \
 src/I2CdevWrapper.d \
 src/MPU9150.d \
-src/zepplin_fc.d \
+src/zeppelin_fc.d \
 src/asf/common/components/memory/sd_mmc/sd_mmc.d \
 src/asf/common/services/clock/sam3s/sysclk.d \
 src/asf/common/services/delay/sam/cycle_counter.d \
@@ -318,9 +318,9 @@ src/sd_mmc_mem.d \
 src/stdio_usb_example.d
 
 
-OUTPUT_FILE_PATH +=Zepplin-FC.elf
+OUTPUT_FILE_PATH +=Zeppelin-FC.elf
 
-OUTPUT_FILE_PATH_AS_ARGS +=Zepplin-FC.elf
+OUTPUT_FILE_PATH_AS_ARGS +=Zeppelin-FC.elf
 
 ADDITIONAL_DEPENDENCIES:=
 
@@ -601,14 +601,14 @@ all: $(OUTPUT_FILE_PATH) $(ADDITIONAL_DEPENDENCIES)
 $(OUTPUT_FILE_PATH): $(OBJS) $(USER_OBJS) $(OUTPUT_FILE_DEP)
 	@echo Building target: $@
 	@echo Invoking: ARM/GNU Linker : (crosstool-NG 1.15.3 - Atmel build: 59) 4.7.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Atmel Studio 6.0\extensions\Atmel\ARMGCC\3.3.1.128\ARMGCCToolchain\bin\arm-none-eabi-gcc.exe$(QUOTE) -o$(OUTPUT_FILE_PATH_AS_ARGS) $(OBJS_AS_ARGS) $(USER_OBJS) $(LIBS) -Wl,-Map="Zepplin-FC.map" -Wl,--start-group -lm  -Wl,--end-group -L"../cmsis/linkerScripts"  -Wl,--gc-sections -T../src/asf/sam/utils/linker_scripts/sam3s/sam3s8/gcc/flash.ld -Wl,--cref -Wl,--entry=Reset_Handler -mthumb  -mcpu=cortex-m3 
+	$(QUOTE)C:\Program Files (x86)\Atmel\Atmel Studio 6.0\extensions\Atmel\ARMGCC\3.3.1.128\ARMGCCToolchain\bin\arm-none-eabi-gcc.exe$(QUOTE) -o$(OUTPUT_FILE_PATH_AS_ARGS) $(OBJS_AS_ARGS) $(USER_OBJS) $(LIBS) -Wl,-Map="Zeppelin-FC.map" -Wl,--start-group -lm  -Wl,--end-group -L"../cmsis/linkerScripts"  -Wl,--gc-sections -T../src/asf/sam/utils/linker_scripts/sam3s/sam3s8/gcc/flash.ld -Wl,--cref -Wl,--entry=Reset_Handler -mthumb  -mcpu=cortex-m3 
 	@echo Finished building target: $@
-	"C:\Program Files (x86)\Atmel\Atmel Studio 6.0\extensions\Atmel\ARMGCC\3.3.1.128\ARMGCCToolchain\bin\arm-none-eabi-objcopy.exe" -O binary "Zepplin-FC.elf" "Zepplin-FC.bin"
-	"C:\Program Files (x86)\Atmel\Atmel Studio 6.0\extensions\Atmel\ARMGCC\3.3.1.128\ARMGCCToolchain\bin\arm-none-eabi-objcopy.exe" -O ihex -R .eeprom -R .fuse -R .lock -R .signature  "Zepplin-FC.elf" "Zepplin-FC.hex"
-	"C:\Program Files (x86)\Atmel\Atmel Studio 6.0\extensions\Atmel\ARMGCC\3.3.1.128\ARMGCCToolchain\bin\arm-none-eabi-objcopy.exe" -j .eeprom --set-section-flags=.eeprom=alloc,load --change-section-lma .eeprom=0 --no-change-warnings -O binary "Zepplin-FC.elf" "Zepplin-FC.eep" || exit 0
-	"C:\Program Files (x86)\Atmel\Atmel Studio 6.0\extensions\Atmel\ARMGCC\3.3.1.128\ARMGCCToolchain\bin\arm-none-eabi-objdump.exe" -h -S "Zepplin-FC.elf" > "Zepplin-FC.lss"
-	"C:\Program Files (x86)\Atmel\Atmel Studio 6.0\extensions\Atmel\ARMGCC\3.3.1.128\ARMGCCToolchain\bin\arm-none-eabi-objcopy.exe" -O srec -R .eeprom -R .fuse -R .lock -R .signature  "Zepplin-FC.elf" "Zepplin-FC.srec"
-	"C:\Program Files (x86)\Atmel\Atmel Studio 6.0\extensions\Atmel\ARMGCC\3.3.1.128\ARMGCCToolchain\bin\arm-none-eabi-size.exe" "Zepplin-FC.elf"
+	"C:\Program Files (x86)\Atmel\Atmel Studio 6.0\extensions\Atmel\ARMGCC\3.3.1.128\ARMGCCToolchain\bin\arm-none-eabi-objcopy.exe" -O binary "Zeppelin-FC.elf" "Zeppelin-FC.bin"
+	"C:\Program Files (x86)\Atmel\Atmel Studio 6.0\extensions\Atmel\ARMGCC\3.3.1.128\ARMGCCToolchain\bin\arm-none-eabi-objcopy.exe" -O ihex -R .eeprom -R .fuse -R .lock -R .signature  "Zeppelin-FC.elf" "Zeppelin-FC.hex"
+	"C:\Program Files (x86)\Atmel\Atmel Studio 6.0\extensions\Atmel\ARMGCC\3.3.1.128\ARMGCCToolchain\bin\arm-none-eabi-objcopy.exe" -j .eeprom --set-section-flags=.eeprom=alloc,load --change-section-lma .eeprom=0 --no-change-warnings -O binary "Zeppelin-FC.elf" "Zeppelin-FC.eep" || exit 0
+	"C:\Program Files (x86)\Atmel\Atmel Studio 6.0\extensions\Atmel\ARMGCC\3.3.1.128\ARMGCCToolchain\bin\arm-none-eabi-objdump.exe" -h -S "Zeppelin-FC.elf" > "Zeppelin-FC.lss"
+	"C:\Program Files (x86)\Atmel\Atmel Studio 6.0\extensions\Atmel\ARMGCC\3.3.1.128\ARMGCCToolchain\bin\arm-none-eabi-objcopy.exe" -O srec -R .eeprom -R .fuse -R .lock -R .signature  "Zeppelin-FC.elf" "Zeppelin-FC.srec"
+	"C:\Program Files (x86)\Atmel\Atmel Studio 6.0\extensions\Atmel\ARMGCC\3.3.1.128\ARMGCCToolchain\bin\arm-none-eabi-size.exe" "Zeppelin-FC.elf"
 	
 
 
@@ -618,5 +618,5 @@ $(OUTPUT_FILE_PATH): $(OBJS) $(USER_OBJS) $(OUTPUT_FILE_DEP)
 # Other Targets
 clean:
 	-$(RM) $(OBJS_AS_ARGS)$(C_DEPS_AS_ARGS) $(EXECUTABLES) 
-	rm -rf "Zepplin-FC.elf" "Zepplin-FC.a" "Zepplin-FC.hex" "Zepplin-FC.bin" "Zepplin-FC.lss" "Zepplin-FC.eep" "Zepplin-FC.map" "Zepplin-FC.srec"
+	rm -rf "Zeppelin-FC.elf" "Zeppelin-FC.a" "Zeppelin-FC.hex" "Zeppelin-FC.bin" "Zeppelin-FC.lss" "Zeppelin-FC.eep" "Zeppelin-FC.map" "Zeppelin-FC.srec"
 	

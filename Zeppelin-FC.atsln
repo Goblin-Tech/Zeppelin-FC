@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Atmel Studio Solution File, Format Version 11.00
-Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "Zepplin-FC", "Zepplin-FC.cproj", "{F7791147-397F-4CD7-85D7-32ABC1945609}"
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "Zeppelin-FC", "Zeppelin-FC.cproj", "{F7791147-397F-4CD7-85D7-32ABC1945609}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

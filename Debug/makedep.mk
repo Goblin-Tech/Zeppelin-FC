@@ -16,7 +16,7 @@ src\I2CdevWrapper.c
 
 src\MPU9150.c
 
-src\zepplin_fc.c
+src\zeppelin_fc.c
 
 src\asf\common\components\memory\sd_mmc\sd_mmc.c
 

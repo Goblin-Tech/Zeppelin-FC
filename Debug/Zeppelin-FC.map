@@ -19,9 +19,9 @@ c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/
 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-memset.o)
                               c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb/crt0.o (memset)
 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-printf.o)
-                              src/zepplin_fc.o (printf)
+                              src/zeppelin_fc.o (printf)
 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-puts.o)
-                              src/zepplin_fc.o (puts)
+                              src/zeppelin_fc.o (puts)
 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-setbuf.o)
                               src/asf/common/utils/stdio/stdio_usb/stdio_usb.o (setbuf)
 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-setvbuf.o)
@@ -120,24 +120,27 @@ c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/
 Allocating common symbols
 Common symbol       size              file
 
-log                 0x224             src/zepplin_fc.o
+log                 0x224             src/zeppelin_fc.o
 g_pwm_channel_led   0x28              src/stdio_usb_example.o
+Script              0x200             src/zeppelin_fc.o
 errno               0x4               c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-reent.o)
-fno                 0x20              src/zepplin_fc.o
-fs                  0x230             src/zepplin_fc.o
-file_object         0x224             src/zepplin_fc.o
+fno                 0x20              src/zeppelin_fc.o
+fs                  0x230             src/zeppelin_fc.o
+file_object         0x224             src/zeppelin_fc.o
 ptr_get             0x4               src/asf/common/utils/stdio/read.o
 ptr_put             0x4               src/asf/common/utils/stdio/write.o
+f_script            0x20              src/zeppelin_fc.o
 MPU9150_buffer      0xe               src/MPU9150.o
 Sensor              0x12              src/stdio_usb_example.o
 udd_g_ctrlreq       0x18              src/asf/sam/drivers/udp/udp_device.o
+f_log               0x20              src/zeppelin_fc.o
 stdio_base          0x4               src/asf/common/utils/stdio/write.o
-bw                  0x4               src/zepplin_fc.o
+bw                  0x4               src/zeppelin_fc.o
 sleepmgr_locks      0x5               src/asf/common/services/sleepmgr/sam/sleepmgr.o
-dir                 0x24              src/zepplin_fc.o
-res                 0x1               src/zepplin_fc.o
+dir                 0x24              src/zeppelin_fc.o
+res                 0x1               src/zeppelin_fc.o
 MPU9150_devAddr     0x1               src/MPU9150.o
-status              0x1               src/zepplin_fc.o
+status              0x1               src/zeppelin_fc.o
 
 Discarded input sections
 
@@ -251,6 +254,14 @@ Discarded input sections
                 0x00000000        0xe src/asf/sam/drivers/twi/twi.o
  .text.twi_disable_master_mode
                 0x00000000        0x6 src/asf/sam/drivers/twi/twi.o
+ .text.twi_set_speed
+                0x00000000       0x3c src/asf/sam/drivers/twi/twi.o
+ .text.twi_master_init
+                0x00000000       0x40 src/asf/sam/drivers/twi/twi.o
+ .text.twi_master_read
+                0x00000000       0x7c src/asf/sam/drivers/twi/twi.o
+ .text.twi_master_write
+                0x00000000       0x72 src/asf/sam/drivers/twi/twi.o
  .text.twi_probe
                 0x00000000       0x28 src/asf/sam/drivers/twi/twi.o
  .text.twi_enable_interrupt
@@ -279,6 +290,9 @@ Discarded input sections
                 0x00000000        0x8 src/asf/sam/drivers/twi/twi.o
  .text.twi_get_pdc_base
                 0x00000000       0x28 src/asf/sam/drivers/twi/twi.o
+ .comment       0x00000000       0x34 src/asf/sam/drivers/twi/twi.o
+ .ARM.attributes
+                0x00000000       0x33 src/asf/sam/drivers/twi/twi.o
  .text          0x00000000        0x0 src/asf/sam/utils/cmsis/sam3s8/source/templates/exceptions.o
  .data          0x00000000        0x0 src/asf/sam/utils/cmsis/sam3s8/source/templates/exceptions.o
  .bss           0x00000000        0x0 src/asf/sam/utils/cmsis/sam3s8/source/templates/exceptions.o
@@ -293,10 +307,25 @@ Discarded input sections
  .text          0x00000000        0x0 src/I2CdevWrapper.o
  .data          0x00000000        0x0 src/I2CdevWrapper.o
  .bss           0x00000000        0x0 src/I2CdevWrapper.o
+ .text.I2Cdev_readBytes
+                0x00000000       0x80 src/I2CdevWrapper.o
+ .text.I2Cdev_readByte
+                0x00000000       0x10 src/I2CdevWrapper.o
  .text.I2Cdev_readBit
                 0x00000000       0x24 src/I2CdevWrapper.o
  .text.I2Cdev_readBits
                 0x00000000       0x34 src/I2CdevWrapper.o
+ .text.I2Cdev_writeBytes
+                0x00000000       0x80 src/I2CdevWrapper.o
+ .text.I2Cdev_writeByte
+                0x00000000       0x14 src/I2CdevWrapper.o
+ .text.I2Cdev_writeBits
+                0x00000000       0x50 src/I2CdevWrapper.o
+ .text.I2Cdev_writeBit
+                0x00000000       0x48 src/I2CdevWrapper.o
+ .comment       0x00000000       0x34 src/I2CdevWrapper.o
+ .ARM.attributes
+                0x00000000       0x33 src/I2CdevWrapper.o
  .text          0x00000000        0x0 src/MPU9150.o
  .data          0x00000000        0x0 src/MPU9150.o
  .bss           0x00000000        0x0 src/MPU9150.o
@@ -318,6 +347,8 @@ Discarded input sections
                 0x00000000       0x20 src/MPU9150.o
  .text.MPU9150_getFullScaleGyroRange
                 0x00000000       0x24 src/MPU9150.o
+ .text.MPU9150_setFullScaleGyroRange
+                0x00000000       0x20 src/MPU9150.o
  .text.MPU9150_getAccelXSelfTest
                 0x00000000       0x28 src/MPU9150.o
  .text.MPU9150_setAccelXSelfTest
@@ -332,6 +363,8 @@ Discarded input sections
                 0x00000000       0x1c src/MPU9150.o
  .text.MPU9150_getFullScaleAccelRange
                 0x00000000       0x24 src/MPU9150.o
+ .text.MPU9150_setFullScaleAccelRange
+                0x00000000       0x20 src/MPU9150.o
  .text.MPU9150_getDHPFMode
                 0x00000000       0x24 src/MPU9150.o
  .text.MPU9150_setDHPFMode
@@ -648,6 +681,8 @@ Discarded input sections
                 0x00000000       0x1c src/MPU9150.o
  .text.MPU9150_getSleepEnabled
                 0x00000000       0x28 src/MPU9150.o
+ .text.MPU9150_setSleepEnabled
+                0x00000000       0x1c src/MPU9150.o
  .text.MPU9150_getWakeCycleEnabled
                 0x00000000       0x28 src/MPU9150.o
  .text.MPU9150_setWakeCycleEnabled
@@ -658,6 +693,10 @@ Discarded input sections
                 0x00000000       0x1c src/MPU9150.o
  .text.MPU9150_getClockSource
                 0x00000000       0x24 src/MPU9150.o
+ .text.MPU9150_setClockSource
+                0x00000000       0x20 src/MPU9150.o
+ .text.MPU9150_initialize
+                0x00000000       0x38 src/MPU9150.o
  .text.MPU9150_getWakeFrequency
                 0x00000000       0x24 src/MPU9150.o
  .text.MPU9150_setWakeFrequency
@@ -798,16 +837,19 @@ Discarded input sections
                 0x00000000       0x20 src/MPU9150.o
  .text.MPU9150_setDMPConfig2
                 0x00000000       0x18 src/MPU9150.o
- .text          0x00000000        0x0 src/zepplin_fc.o
- .data          0x00000000        0x0 src/zepplin_fc.o
- .bss           0x00000000        0x0 src/zepplin_fc.o
- .text.ZP_WriteToFile
-                0x00000000       0x68 src/zepplin_fc.o
- .text.Zepplin_Scan_Scripts
-                0x00000000       0x18 src/zepplin_fc.o
+ .comment       0x00000000       0x34 src/MPU9150.o
+ .ARM.attributes
+                0x00000000       0x33 src/MPU9150.o
+ COMMON         0x00000000        0xf src/MPU9150.o
+ .text          0x00000000        0x0 src/zeppelin_fc.o
+ .data          0x00000000        0x0 src/zeppelin_fc.o
+ .bss           0x00000000        0x0 src/zeppelin_fc.o
+ .text.die      0x00000000       0x14 src/zeppelin_fc.o
+ .text.ZP_Scan_Scripts
+                0x00000000       0x18 src/zeppelin_fc.o
  .data.test_file_name
-                0x00000000       0x11 src/zepplin_fc.o
- .bss.tick      0x00000000        0x2 src/zepplin_fc.o
+                0x00000000        0xc src/zeppelin_fc.o
+ .bss.tick      0x00000000        0x2 src/zeppelin_fc.o
  .text          0x00000000        0x0 src/asf/common/components/memory/sd_mmc/sd_mmc.o
  .data          0x00000000        0x0 src/asf/common/components/memory/sd_mmc/sd_mmc.o
  .bss           0x00000000        0x0 src/asf/common/components/memory/sd_mmc/sd_mmc.o
@@ -1283,8 +1325,6 @@ Discarded input sections
  .text.f_rename
                 0x00000000      0x13c src/asf/thirdparty/fatfs/fatfs-r0.09/src/ff.o
  .text.f_gets   0x00000000       0x50 src/asf/thirdparty/fatfs/fatfs-r0.09/src/ff.o
- .text.f_putc   0x00000000       0x34 src/asf/thirdparty/fatfs/fatfs-r0.09/src/ff.o
- .text.f_puts   0x00000000       0x28 src/asf/thirdparty/fatfs/fatfs-r0.09/src/ff.o
  .text.f_printf
                 0x00000000      0x27c src/asf/thirdparty/fatfs/fatfs-r0.09/src/ff.o
  .text          0x00000000        0x0 src/asf/thirdparty/fatfs/fatfs-r0.09/src/option/ccsbcs.o
@@ -1314,9 +1354,9 @@ Discarded input sections
  .text          0x00000000        0x0 src/stdio_usb_example.o
  .data          0x00000000        0x0 src/stdio_usb_example.o
  .bss           0x00000000        0x0 src/stdio_usb_example.o
- .text.Zepplin_SendPacket
+ .text.ZP_SendPacket
                 0x00000000      0x838 src/stdio_usb_example.o
- .text.Zepplin_UpdateSensorData
+ .text.ZP_UpdateSensorData
                 0x00000000       0x5c src/stdio_usb_example.o
  .bss.ZP_Packet_Tick
                 0x00000000        0x4 src/stdio_usb_example.o
@@ -1575,7 +1615,7 @@ LOAD src/asf/sam/utils/cmsis/sam3s8/source/templates/gcc/startup_sam3sd8.o
 LOAD src/asf/sam/utils/cmsis/sam3s8/source/templates/system_sam3sd8.o
 LOAD src/I2CdevWrapper.o
 LOAD src/MPU9150.o
-LOAD src/zepplin_fc.o
+LOAD src/zeppelin_fc.o
 LOAD src/asf/common/components/memory/sd_mmc/sd_mmc.o
 LOAD src/asf/common/services/clock/sam3s/sysclk.o
 LOAD src/asf/common/services/delay/sam/cycle_counter.o
@@ -1616,7 +1656,7 @@ LOAD c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1
 LOAD c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/thumb/crtn.o
                 [0x00002000]                __stack_size__ = DEFINED (__stack_size__)?__stack_size__:0x2000
 
-.text           0x00400000     0xa894
+.text           0x00400000     0xa52c
                 0x00400000                . = ALIGN (0x4)
                 0x00400000                _sfixed = .
  *(.vectors .vectors.*)
@@ -1624,973 +1664,925 @@ LOAD c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1
                 0x00400000                exception_table
  *(.text .text.* .gnu.linkonce.t.*)
  .text          0x004000d0       0xb0 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/thumb/crtbegin.o
- .text.twi_set_speed
-                0x00400180       0x3c src/asf/sam/drivers/twi/twi.o
-                0x00400180                twi_set_speed
- .text.twi_master_init
-                0x004001bc       0x40 src/asf/sam/drivers/twi/twi.o
-                0x004001bc                twi_master_init
- .text.twi_master_read
-                0x004001fc       0x7c src/asf/sam/drivers/twi/twi.o
-                0x004001fc                twi_master_read
- .text.twi_master_write
-                0x00400278       0x72 src/asf/sam/drivers/twi/twi.o
-                0x00400278                twi_master_write
  .text.Dummy_Handler
-                0x004002ea        0x2 src/asf/sam/utils/cmsis/sam3s8/source/templates/exceptions.o
-                0x004002ea                DACC_Handler
-                0x004002ea                DebugMon_Handler
-                0x004002ea                HardFault_Handler
-                0x004002ea                TC2_Handler
-                0x004002ea                SPI_Handler
-                0x004002ea                TWI1_Handler
-                0x004002ea                PendSV_Handler
-                0x004002ea                NMI_Handler
-                0x004002ea                ADC_Handler
-                0x004002ea                CRCCU_Handler
-                0x004002ea                USART0_Handler
-                0x004002ea                RTT_Handler
-                0x004002ea                RTC_Handler
-                0x004002ea                UsageFault_Handler
-                0x004002ea                WDT_Handler
-                0x004002ea                TC1_Handler
-                0x004002ea                HSMCI_Handler
-                0x004002ea                UART1_Handler
-                0x004002ea                Dummy_Handler
-                0x004002ea                TWI0_Handler
-                0x004002ea                USART1_Handler
-                0x004002ea                SSC_Handler
-                0x004002ea                ACC_Handler
-                0x004002ea                PMC_Handler
-                0x004002ea                PWM_Handler
-                0x004002ea                MemManage_Handler
-                0x004002ea                SUPC_Handler
-                0x004002ea                SVC_Handler
-                0x004002ea                EFC_Handler
-                0x004002ea                UART0_Handler
-                0x004002ea                BusFault_Handler
-                0x004002ea                RSTC_Handler
-                0x004002ea                TC0_Handler
+                0x00400180        0x2 src/asf/sam/utils/cmsis/sam3s8/source/templates/exceptions.o
+                0x00400180                DACC_Handler
+                0x00400180                DebugMon_Handler
+                0x00400180                HardFault_Handler
+                0x00400180                TC2_Handler
+                0x00400180                SPI_Handler
+                0x00400180                TWI1_Handler
+                0x00400180                PendSV_Handler
+                0x00400180                NMI_Handler
+                0x00400180                ADC_Handler
+                0x00400180                CRCCU_Handler
+                0x00400180                USART0_Handler
+                0x00400180                RTT_Handler
+                0x00400180                RTC_Handler
+                0x00400180                UsageFault_Handler
+                0x00400180                WDT_Handler
+                0x00400180                TC1_Handler
+                0x00400180                HSMCI_Handler
+                0x00400180                UART1_Handler
+                0x00400180                Dummy_Handler
+                0x00400180                TWI0_Handler
+                0x00400180                USART1_Handler
+                0x00400180                SSC_Handler
+                0x00400180                ACC_Handler
+                0x00400180                PMC_Handler
+                0x00400180                PWM_Handler
+                0x00400180                MemManage_Handler
+                0x00400180                SUPC_Handler
+                0x00400180                SVC_Handler
+                0x00400180                EFC_Handler
+                0x00400180                UART0_Handler
+                0x00400180                BusFault_Handler
+                0x00400180                RSTC_Handler
+                0x00400180                TC0_Handler
+ *fill*         0x00400182        0x2 00
  .text.Reset_Handler
-                0x004002ec       0x7c src/asf/sam/utils/cmsis/sam3s8/source/templates/gcc/startup_sam3sd8.o
-                0x004002ec                Reset_Handler
+                0x00400184       0x7c src/asf/sam/utils/cmsis/sam3s8/source/templates/gcc/startup_sam3sd8.o
+                0x00400184                Reset_Handler
  .text.SystemCoreClockUpdate
-                0x00400368       0xd8 src/asf/sam/utils/cmsis/sam3s8/source/templates/system_sam3sd8.o
-                0x00400368                SystemCoreClockUpdate
+                0x00400200       0xd8 src/asf/sam/utils/cmsis/sam3s8/source/templates/system_sam3sd8.o
+                0x00400200                SystemCoreClockUpdate
  .text.system_init_flash
-                0x00400440       0x3c src/asf/sam/utils/cmsis/sam3s8/source/templates/system_sam3sd8.o
-                0x00400440                system_init_flash
- .text.I2Cdev_readBytes
-                0x0040047c       0x80 src/I2CdevWrapper.o
-                0x0040047c                I2Cdev_readBytes
- .text.I2Cdev_readByte
-                0x004004fc       0x10 src/I2CdevWrapper.o
-                0x004004fc                I2Cdev_readByte
- .text.I2Cdev_writeBytes
-                0x0040050c       0x80 src/I2CdevWrapper.o
-                0x0040050c                I2Cdev_writeBytes
- .text.I2Cdev_writeByte
-                0x0040058c       0x14 src/I2CdevWrapper.o
-                0x0040058c                I2Cdev_writeByte
- .text.I2Cdev_writeBits
-                0x004005a0       0x50 src/I2CdevWrapper.o
-                0x004005a0                I2Cdev_writeBits
- .text.I2Cdev_writeBit
-                0x004005f0       0x48 src/I2CdevWrapper.o
-                0x004005f0                I2Cdev_writeBit
- .text.MPU9150_setFullScaleGyroRange
-                0x00400638       0x20 src/MPU9150.o
-                0x00400638                MPU9150_setFullScaleGyroRange
- .text.MPU9150_setFullScaleAccelRange
-                0x00400658       0x20 src/MPU9150.o
-                0x00400658                MPU9150_setFullScaleAccelRange
- .text.MPU9150_setSleepEnabled
-                0x00400678       0x1c src/MPU9150.o
-                0x00400678                MPU9150_setSleepEnabled
- .text.MPU9150_setClockSource
-                0x00400694       0x20 src/MPU9150.o
-                0x00400694                MPU9150_setClockSource
- .text.MPU9150_initialize
-                0x004006b4       0x38 src/MPU9150.o
-                0x004006b4                MPU9150_initialize
- .text.die      0x004006ec       0x14 src/zepplin_fc.o
-                0x004006ec                die
- .text.ZP_CreateFile
-                0x00400700       0x5c src/zepplin_fc.o
-                0x00400700                ZP_CreateFile
- .text.ZP_Close
-                0x0040075c       0x1c src/zepplin_fc.o
-                0x0040075c                ZP_Close
+                0x004002d8       0x3c src/asf/sam/utils/cmsis/sam3s8/source/templates/system_sam3sd8.o
+                0x004002d8                system_init_flash
  .text.SysTick_Handler
-                0x00400778       0x10 src/zepplin_fc.o
-                0x00400778                SysTick_Handler
- .text.Zepplin_Init
-                0x00400788      0x168 src/zepplin_fc.o
-                0x00400788                Zepplin_Init
- .text.Zepplin_Button
-                0x004008f0       0x54 src/zepplin_fc.o
-                0x004008f0                Zepplin_Button
- .text.Zepplin_ButtonHandler
-                0x00400944       0x74 src/zepplin_fc.o
-                0x00400944                Zepplin_ButtonHandler
- .text.Zepplin_Loop
-                0x004009b8        0xc src/zepplin_fc.o
-                0x004009b8                Zepplin_Loop
+                0x00400314       0x10 src/zeppelin_fc.o
+                0x00400314                SysTick_Handler
+ .text.ZP_Init  0x00400324      0x188 src/zeppelin_fc.o
+                0x00400324                ZP_Init
+ .text.ZP_CreateLogFile
+                0x004004ac       0x7c src/zeppelin_fc.o
+                0x004004ac                ZP_CreateLogFile
+ .text.ZP_Button
+                0x00400528       0x54 src/zeppelin_fc.o
+                0x00400528                ZP_Button
+ .text.ZP_ButtonHandler
+                0x0040057c       0x80 src/zeppelin_fc.o
+                0x0040057c                ZP_ButtonHandler
+ .text.ZP_Loop  0x004005fc        0xc src/zeppelin_fc.o
+                0x004005fc                ZP_Loop
  .text.SDMMC_UNSTUFF_BITS
-                0x004009c4       0x4e src/asf/common/components/memory/sd_mmc/sd_mmc.o
- *fill*         0x00400a12        0x2 00
+                0x00400608       0x4e src/asf/common/components/memory/sd_mmc/sd_mmc.o
+ *fill*         0x00400656        0x2 00
  .text.sd_mmc_deselect_slot
-                0x00400a14       0x18 src/asf/common/components/memory/sd_mmc/sd_mmc.o
+                0x00400658       0x18 src/asf/common/components/memory/sd_mmc/sd_mmc.o
  .text.sd_mmc_configure_slot
-                0x00400a2c       0x2c src/asf/common/components/memory/sd_mmc/sd_mmc.o
+                0x00400670       0x2c src/asf/common/components/memory/sd_mmc/sd_mmc.o
  .text.sd_mmc_select_slot
-                0x00400a58       0xe0 src/asf/common/components/memory/sd_mmc/sd_mmc.o
+                0x0040069c       0xe0 src/asf/common/components/memory/sd_mmc/sd_mmc.o
  .text.sd_mmc_cmd9_mci
-                0x00400b38       0x2c src/asf/common/components/memory/sd_mmc/sd_mmc.o
+                0x0040077c       0x2c src/asf/common/components/memory/sd_mmc/sd_mmc.o
  .text.sd_mmc_init
-                0x00400b64       0x2c src/asf/common/components/memory/sd_mmc/sd_mmc.o
-                0x00400b64                sd_mmc_init
+                0x004007a8       0x2c src/asf/common/components/memory/sd_mmc/sd_mmc.o
+                0x004007a8                sd_mmc_init
  .text.sd_mmc_check
-                0x00400b90      0x6e8 src/asf/common/components/memory/sd_mmc/sd_mmc.o
-                0x00400b90                sd_mmc_check
+                0x004007d4      0x6e8 src/asf/common/components/memory/sd_mmc/sd_mmc.o
+                0x004007d4                sd_mmc_check
  .text.sd_mmc_get_type
-                0x00401278       0x24 src/asf/common/components/memory/sd_mmc/sd_mmc.o
-                0x00401278                sd_mmc_get_type
+                0x00400ebc       0x24 src/asf/common/components/memory/sd_mmc/sd_mmc.o
+                0x00400ebc                sd_mmc_get_type
  .text.sd_mmc_get_capacity
-                0x0040129c       0x24 src/asf/common/components/memory/sd_mmc/sd_mmc.o
-                0x0040129c                sd_mmc_get_capacity
+                0x00400ee0       0x24 src/asf/common/components/memory/sd_mmc/sd_mmc.o
+                0x00400ee0                sd_mmc_get_capacity
  .text.sd_mmc_is_write_protected
-                0x004012c0        0x4 src/asf/common/components/memory/sd_mmc/sd_mmc.o
-                0x004012c0                sd_mmc_is_write_protected
+                0x00400f04        0x4 src/asf/common/components/memory/sd_mmc/sd_mmc.o
+                0x00400f04                sd_mmc_is_write_protected
  .text.sd_mmc_init_read_blocks
-                0x004012c4       0xf0 src/asf/common/components/memory/sd_mmc/sd_mmc.o
-                0x004012c4                sd_mmc_init_read_blocks
+                0x00400f08       0xf0 src/asf/common/components/memory/sd_mmc/sd_mmc.o
+                0x00400f08                sd_mmc_init_read_blocks
  .text.sd_mmc_start_read_blocks
-                0x004013b4       0x24 src/asf/common/components/memory/sd_mmc/sd_mmc.o
-                0x004013b4                sd_mmc_start_read_blocks
+                0x00400ff8       0x24 src/asf/common/components/memory/sd_mmc/sd_mmc.o
+                0x00400ff8                sd_mmc_start_read_blocks
  .text.sd_mmc_wait_end_of_read_blocks
-                0x004013d8       0x50 src/asf/common/components/memory/sd_mmc/sd_mmc.o
-                0x004013d8                sd_mmc_wait_end_of_read_blocks
+                0x0040101c       0x50 src/asf/common/components/memory/sd_mmc/sd_mmc.o
+                0x0040101c                sd_mmc_wait_end_of_read_blocks
  .text.sd_mmc_init_write_blocks
-                0x00401428       0xa4 src/asf/common/components/memory/sd_mmc/sd_mmc.o
-                0x00401428                sd_mmc_init_write_blocks
+                0x0040106c       0xa4 src/asf/common/components/memory/sd_mmc/sd_mmc.o
+                0x0040106c                sd_mmc_init_write_blocks
  .text.sd_mmc_start_write_blocks
-                0x004014cc       0x24 src/asf/common/components/memory/sd_mmc/sd_mmc.o
-                0x004014cc                sd_mmc_start_write_blocks
+                0x00401110       0x24 src/asf/common/components/memory/sd_mmc/sd_mmc.o
+                0x00401110                sd_mmc_start_write_blocks
  .text.sd_mmc_wait_end_of_write_blocks
-                0x004014f0       0x48 src/asf/common/components/memory/sd_mmc/sd_mmc.o
-                0x004014f0                sd_mmc_wait_end_of_write_blocks
+                0x00401134       0x48 src/asf/common/components/memory/sd_mmc/sd_mmc.o
+                0x00401134                sd_mmc_wait_end_of_write_blocks
  .text.osc_enable
-                0x00401538       0x48 src/asf/common/services/clock/sam3s/sysclk.o
+                0x0040117c       0x48 src/asf/common/services/clock/sam3s/sysclk.o
  .text.osc_wait_ready.constprop.5
-                0x00401580       0x10 src/asf/common/services/clock/sam3s/sysclk.o
+                0x004011c4       0x10 src/asf/common/services/clock/sam3s/sysclk.o
  .text.sysclk_enable_usb
-                0x00401590       0x4c src/asf/common/services/clock/sam3s/sysclk.o
-                0x00401590                sysclk_enable_usb
+                0x004011d4       0x4c src/asf/common/services/clock/sam3s/sysclk.o
+                0x004011d4                sysclk_enable_usb
  .text.sysclk_init
-                0x004015dc       0x58 src/asf/common/services/clock/sam3s/sysclk.o
-                0x004015dc                sysclk_init
+                0x00401220       0x58 src/asf/common/services/clock/sam3s/sysclk.o
+                0x00401220                sysclk_init
  .text.mem_test_unit_ready
-                0x00401634       0x14 src/asf/common/services/storage/ctrl_access/ctrl_access.o
-                0x00401634                mem_test_unit_ready
+                0x00401278       0x14 src/asf/common/services/storage/ctrl_access/ctrl_access.o
+                0x00401278                mem_test_unit_ready
  .text.mem_read_capacity
-                0x00401648       0x14 src/asf/common/services/storage/ctrl_access/ctrl_access.o
-                0x00401648                mem_read_capacity
+                0x0040128c       0x14 src/asf/common/services/storage/ctrl_access/ctrl_access.o
+                0x0040128c                mem_read_capacity
  .text.mem_sector_size
-                0x0040165c        0xa src/asf/common/services/storage/ctrl_access/ctrl_access.o
-                0x0040165c                mem_sector_size
- *fill*         0x00401666        0x2 00
+                0x004012a0        0xa src/asf/common/services/storage/ctrl_access/ctrl_access.o
+                0x004012a0                mem_sector_size
+ *fill*         0x004012aa        0x2 00
  .text.mem_wr_protect
-                0x00401668       0x14 src/asf/common/services/storage/ctrl_access/ctrl_access.o
-                0x00401668                mem_wr_protect
+                0x004012ac       0x14 src/asf/common/services/storage/ctrl_access/ctrl_access.o
+                0x004012ac                mem_wr_protect
  .text.memory_2_ram
-                0x0040167c       0x18 src/asf/common/services/storage/ctrl_access/ctrl_access.o
-                0x0040167c                memory_2_ram
+                0x004012c0       0x18 src/asf/common/services/storage/ctrl_access/ctrl_access.o
+                0x004012c0                memory_2_ram
  .text.ram_2_memory
-                0x00401694       0x18 src/asf/common/services/storage/ctrl_access/ctrl_access.o
-                0x00401694                ram_2_memory
+                0x004012d8       0x18 src/asf/common/services/storage/ctrl_access/ctrl_access.o
+                0x004012d8                ram_2_memory
  .text.cpu_irq_save
-                0x004016ac       0x14 src/asf/common/services/usb/class/cdc/device/udi_cdc.o
+                0x004012f0       0x14 src/asf/common/services/usb/class/cdc/device/udi_cdc.o
  .text.udi_cdc_comm_disable
-                0x004016c0       0x10 src/asf/common/services/usb/class/cdc/device/udi_cdc.o
-                0x004016c0                udi_cdc_comm_disable
+                0x00401304       0x10 src/asf/common/services/usb/class/cdc/device/udi_cdc.o
+                0x00401304                udi_cdc_comm_disable
  .text.udi_cdc_data_setup
-                0x004016d0        0x4 src/asf/common/services/usb/class/cdc/device/udi_cdc.o
-                0x004016d0                udi_cdc_data_setup
+                0x00401314        0x4 src/asf/common/services/usb/class/cdc/device/udi_cdc.o
+                0x00401314                udi_cdc_data_setup
  .text.udi_cdc_getsetting
-                0x004016d4        0x4 src/asf/common/services/usb/class/cdc/device/udi_cdc.o
-                0x004016d4                udi_cdc_getsetting
+                0x00401318        0x4 src/asf/common/services/usb/class/cdc/device/udi_cdc.o
+                0x00401318                udi_cdc_getsetting
  .text.udi_cdc_line_coding_received
-                0x004016d8        0x2 src/asf/common/services/usb/class/cdc/device/udi_cdc.o
- *fill*         0x004016da        0x2 00
+                0x0040131c        0x2 src/asf/common/services/usb/class/cdc/device/udi_cdc.o
+ *fill*         0x0040131e        0x2 00
  .text.udi_cdc_data_disable
-                0x004016dc       0x28 src/asf/common/services/usb/class/cdc/device/udi_cdc.o
-                0x004016dc                udi_cdc_data_disable
+                0x00401320       0x28 src/asf/common/services/usb/class/cdc/device/udi_cdc.o
+                0x00401320                udi_cdc_data_disable
  .text.cpu_irq_restore
-                0x00401704       0x14 src/asf/common/services/usb/class/cdc/device/udi_cdc.o
+                0x00401348       0x14 src/asf/common/services/usb/class/cdc/device/udi_cdc.o
  .text.udi_cdc_comm_setup
-                0x00401718       0x58 src/asf/common/services/usb/class/cdc/device/udi_cdc.o
-                0x00401718                udi_cdc_comm_setup
+                0x0040135c       0x58 src/asf/common/services/usb/class/cdc/device/udi_cdc.o
+                0x0040135c                udi_cdc_comm_setup
  .text.udi_cdc_tx_send.isra.5
-                0x00401770       0xc8 src/asf/common/services/usb/class/cdc/device/udi_cdc.o
+                0x004013b4       0xc8 src/asf/common/services/usb/class/cdc/device/udi_cdc.o
  .text.udi_cdc_data_sof_notify
-                0x00401838        0xc src/asf/common/services/usb/class/cdc/device/udi_cdc.o
-                0x00401838                udi_cdc_data_sof_notify
+                0x0040147c        0xc src/asf/common/services/usb/class/cdc/device/udi_cdc.o
+                0x0040147c                udi_cdc_data_sof_notify
  .text.udi_cdc_data_sent
-                0x00401844       0x38 src/asf/common/services/usb/class/cdc/device/udi_cdc.o
+                0x00401488       0x38 src/asf/common/services/usb/class/cdc/device/udi_cdc.o
  .text.udi_cdc_comm_enable
-                0x0040187c       0x60 src/asf/common/services/usb/class/cdc/device/udi_cdc.o
-                0x0040187c                udi_cdc_comm_enable
+                0x004014c0       0x60 src/asf/common/services/usb/class/cdc/device/udi_cdc.o
+                0x004014c0                udi_cdc_comm_enable
  .text.udi_cdc_multi_is_rx_ready
-                0x004018dc       0x3c src/asf/common/services/usb/class/cdc/device/udi_cdc.o
-                0x004018dc                udi_cdc_multi_is_rx_ready
+                0x00401520       0x3c src/asf/common/services/usb/class/cdc/device/udi_cdc.o
+                0x00401520                udi_cdc_multi_is_rx_ready
  .text.udi_cdc_rx_start.isra.9
-                0x00401918       0x88 src/asf/common/services/usb/class/cdc/device/udi_cdc.o
+                0x0040155c       0x88 src/asf/common/services/usb/class/cdc/device/udi_cdc.o
  .text.udi_cdc_data_received
-                0x004019a0       0x58 src/asf/common/services/usb/class/cdc/device/udi_cdc.o
+                0x004015e4       0x58 src/asf/common/services/usb/class/cdc/device/udi_cdc.o
  .text.udi_cdc_data_enable
-                0x004019f8       0x88 src/asf/common/services/usb/class/cdc/device/udi_cdc.o
-                0x004019f8                udi_cdc_data_enable
+                0x0040163c       0x88 src/asf/common/services/usb/class/cdc/device/udi_cdc.o
+                0x0040163c                udi_cdc_data_enable
  .text.udi_cdc_multi_getc
-                0x00401a80       0x90 src/asf/common/services/usb/class/cdc/device/udi_cdc.o
-                0x00401a80                udi_cdc_multi_getc
+                0x004016c4       0x90 src/asf/common/services/usb/class/cdc/device/udi_cdc.o
+                0x004016c4                udi_cdc_multi_getc
  .text.udi_cdc_getc
-                0x00401b10       0x10 src/asf/common/services/usb/class/cdc/device/udi_cdc.o
-                0x00401b10                udi_cdc_getc
+                0x00401754       0x10 src/asf/common/services/usb/class/cdc/device/udi_cdc.o
+                0x00401754                udi_cdc_getc
  .text.udi_cdc_multi_is_tx_ready
-                0x00401b20       0x68 src/asf/common/services/usb/class/cdc/device/udi_cdc.o
-                0x00401b20                udi_cdc_multi_is_tx_ready
+                0x00401764       0x68 src/asf/common/services/usb/class/cdc/device/udi_cdc.o
+                0x00401764                udi_cdc_multi_is_tx_ready
  .text.udi_cdc_multi_putc
-                0x00401b88       0x80 src/asf/common/services/usb/class/cdc/device/udi_cdc.o
-                0x00401b88                udi_cdc_multi_putc
+                0x004017cc       0x80 src/asf/common/services/usb/class/cdc/device/udi_cdc.o
+                0x004017cc                udi_cdc_multi_putc
  .text.udi_cdc_putc
-                0x00401c08       0x10 src/asf/common/services/usb/class/cdc/device/udi_cdc.o
-                0x00401c08                udi_cdc_putc
+                0x0040184c       0x10 src/asf/common/services/usb/class/cdc/device/udi_cdc.o
+                0x0040184c                udi_cdc_putc
  .text.udc_valid_address
-                0x00401c18       0x18 src/asf/common/services/usb/udc/udc.o
+                0x0040185c       0x18 src/asf/common/services/usb/udc/udc.o
  .text.udc_update_iface_desc
-                0x00401c30       0x58 src/asf/common/services/usb/udc/udc.o
+                0x00401874       0x58 src/asf/common/services/usb/udc/udc.o
  .text.udc_next_desc_in_iface.constprop.3
-                0x00401c88       0x28 src/asf/common/services/usb/udc/udc.o
+                0x004018cc       0x28 src/asf/common/services/usb/udc/udc.o
  .text.udc_iface_disable
-                0x00401cb0       0x54 src/asf/common/services/usb/udc/udc.o
+                0x004018f4       0x54 src/asf/common/services/usb/udc/udc.o
  .text.udc_iface_enable
-                0x00401d04       0x50 src/asf/common/services/usb/udc/udc.o
+                0x00401948       0x50 src/asf/common/services/usb/udc/udc.o
  .text.udc_start
-                0x00401d54        0xc src/asf/common/services/usb/udc/udc.o
-                0x00401d54                udc_start
+                0x00401998        0xc src/asf/common/services/usb/udc/udc.o
+                0x00401998                udc_start
  .text.udc_reset
-                0x00401d60       0x44 src/asf/common/services/usb/udc/udc.o
-                0x00401d60                udc_reset
+                0x004019a4       0x44 src/asf/common/services/usb/udc/udc.o
+                0x004019a4                udc_reset
  .text.udc_sof_notify
-                0x00401da4       0x34 src/asf/common/services/usb/udc/udc.o
-                0x00401da4                udc_sof_notify
+                0x004019e8       0x34 src/asf/common/services/usb/udc/udc.o
+                0x004019e8                udc_sof_notify
  .text.udc_process_setup
-                0x00401dd8      0x32c src/asf/common/services/usb/udc/udc.o
-                0x00401dd8                udc_process_setup
- .text._read    0x00402104       0x40 src/asf/common/utils/stdio/read.o
-                0x00402104                _read
+                0x00401a1c      0x32c src/asf/common/services/usb/udc/udc.o
+                0x00401a1c                udc_process_setup
+ .text._read    0x00401d48       0x40 src/asf/common/utils/stdio/read.o
+                0x00401d48                _read
  .text.stdio_usb_getchar
-                0x00402144       0x20 src/asf/common/utils/stdio/stdio_usb/stdio_usb.o
-                0x00402144                stdio_usb_getchar
+                0x00401d88       0x20 src/asf/common/utils/stdio/stdio_usb/stdio_usb.o
+                0x00401d88                stdio_usb_getchar
  .text.stdio_usb_putchar
-                0x00402164       0x28 src/asf/common/utils/stdio/stdio_usb/stdio_usb.o
-                0x00402164                stdio_usb_putchar
+                0x00401da8       0x28 src/asf/common/utils/stdio/stdio_usb/stdio_usb.o
+                0x00401da8                stdio_usb_putchar
  .text.stdio_usb_enable
-                0x0040218c        0xc src/asf/common/utils/stdio/stdio_usb/stdio_usb.o
-                0x0040218c                stdio_usb_enable
+                0x00401dd0        0xc src/asf/common/utils/stdio/stdio_usb/stdio_usb.o
+                0x00401dd0                stdio_usb_enable
  .text.stdio_usb_disable
-                0x00402198        0xc src/asf/common/utils/stdio/stdio_usb/stdio_usb.o
-                0x00402198                stdio_usb_disable
+                0x00401ddc        0xc src/asf/common/utils/stdio/stdio_usb/stdio_usb.o
+                0x00401ddc                stdio_usb_disable
  .text.stdio_usb_init
-                0x004021a4       0x60 src/asf/common/utils/stdio/stdio_usb/stdio_usb.o
-                0x004021a4                stdio_usb_init
- .text._write   0x00402204       0x40 src/asf/common/utils/stdio/write.o
-                0x00402204                _write
+                0x00401de8       0x60 src/asf/common/utils/stdio/stdio_usb/stdio_usb.o
+                0x00401de8                stdio_usb_init
+ .text._write   0x00401e48       0x40 src/asf/common/utils/stdio/write.o
+                0x00401e48                _write
  .text.board_init
-                0x00402244       0x68 src/asf/sam/boards/sam3s_ek/init.o
-                0x00402244                board_init
+                0x00401e88       0x68 src/asf/sam/boards/sam3s_ek/init.o
+                0x00401e88                board_init
  .text.efc_perform_command
-                0x004022ac       0x3c src/asf/sam/drivers/efc/efc.o
-                0x004022ac                efc_perform_command
+                0x00401ef0       0x3c src/asf/sam/drivers/efc/efc.o
+                0x00401ef0                efc_perform_command
  .text.efc_get_result
-                0x004022e8        0x4 src/asf/sam/drivers/efc/efc.o
-                0x004022e8                efc_get_result
+                0x00401f2c        0x4 src/asf/sam/drivers/efc/efc.o
+                0x00401f2c                efc_get_result
  .text.hsmci_reset
-                0x004022ec       0x24 src/asf/sam/drivers/hsmci/hsmci.o
+                0x00401f30       0x24 src/asf/sam/drivers/hsmci/hsmci.o
  .text.hsmci_send_cmd_execute
-                0x00402310       0x7c src/asf/sam/drivers/hsmci/hsmci.o
+                0x00401f54       0x7c src/asf/sam/drivers/hsmci/hsmci.o
  .text.hsmci_init
-                0x0040238c       0x28 src/asf/sam/drivers/hsmci/hsmci.o
-                0x0040238c                hsmci_init
+                0x00401fd0       0x28 src/asf/sam/drivers/hsmci/hsmci.o
+                0x00401fd0                hsmci_init
  .text.hsmci_get_bus_width
-                0x004023b4        0xa src/asf/sam/drivers/hsmci/hsmci.o
-                0x004023b4                hsmci_get_bus_width
+                0x00401ff8        0xa src/asf/sam/drivers/hsmci/hsmci.o
+                0x00401ff8                hsmci_get_bus_width
  .text.hsmci_is_high_speed_capable
-                0x004023be        0x4 src/asf/sam/drivers/hsmci/hsmci.o
-                0x004023be                hsmci_is_high_speed_capable
- *fill*         0x004023c2        0x2 00
+                0x00402002        0x4 src/asf/sam/drivers/hsmci/hsmci.o
+                0x00402002                hsmci_is_high_speed_capable
+ *fill*         0x00402006        0x2 00
  .text.hsmci_select_device
-                0x004023c4       0x64 src/asf/sam/drivers/hsmci/hsmci.o
-                0x004023c4                hsmci_select_device
+                0x00402008       0x64 src/asf/sam/drivers/hsmci/hsmci.o
+                0x00402008                hsmci_select_device
  .text.hsmci_deselect_device
-                0x00402428        0x2 src/asf/sam/drivers/hsmci/hsmci.o
-                0x00402428                hsmci_deselect_device
+                0x0040206c        0x2 src/asf/sam/drivers/hsmci/hsmci.o
+                0x0040206c                hsmci_deselect_device
  .text.hsmci_send_clock
-                0x0040242a       0x1e src/asf/sam/drivers/hsmci/hsmci.o
-                0x0040242a                hsmci_send_clock
+                0x0040206e       0x1e src/asf/sam/drivers/hsmci/hsmci.o
+                0x0040206e                hsmci_send_clock
  .text.hsmci_send_cmd
-                0x00402448       0x2c src/asf/sam/drivers/hsmci/hsmci.o
-                0x00402448                hsmci_send_cmd
+                0x0040208c       0x2c src/asf/sam/drivers/hsmci/hsmci.o
+                0x0040208c                hsmci_send_cmd
  .text.hsmci_get_response
-                0x00402474        0x8 src/asf/sam/drivers/hsmci/hsmci.o
-                0x00402474                hsmci_get_response
+                0x004020b8        0x8 src/asf/sam/drivers/hsmci/hsmci.o
+                0x004020b8                hsmci_get_response
  .text.hsmci_get_response_128
-                0x0040247c       0x22 src/asf/sam/drivers/hsmci/hsmci.o
-                0x0040247c                hsmci_get_response_128
- *fill*         0x0040249e        0x2 00
+                0x004020c0       0x22 src/asf/sam/drivers/hsmci/hsmci.o
+                0x004020c0                hsmci_get_response_128
+ *fill*         0x004020e2        0x2 00
  .text.hsmci_adtc_start
-                0x004024a0       0xac src/asf/sam/drivers/hsmci/hsmci.o
-                0x004024a0                hsmci_adtc_start
+                0x004020e4       0xac src/asf/sam/drivers/hsmci/hsmci.o
+                0x004020e4                hsmci_adtc_start
  .text.hsmci_read_word
-                0x0040254c       0x60 src/asf/sam/drivers/hsmci/hsmci.o
-                0x0040254c                hsmci_read_word
+                0x00402190       0x60 src/asf/sam/drivers/hsmci/hsmci.o
+                0x00402190                hsmci_read_word
  .text.hsmci_start_read_blocks
-                0x004025ac       0x3c src/asf/sam/drivers/hsmci/hsmci.o
-                0x004025ac                hsmci_start_read_blocks
+                0x004021f0       0x3c src/asf/sam/drivers/hsmci/hsmci.o
+                0x004021f0                hsmci_start_read_blocks
  .text.hsmci_wait_end_of_read_blocks
-                0x004025e8       0x60 src/asf/sam/drivers/hsmci/hsmci.o
-                0x004025e8                hsmci_wait_end_of_read_blocks
+                0x0040222c       0x60 src/asf/sam/drivers/hsmci/hsmci.o
+                0x0040222c                hsmci_wait_end_of_read_blocks
  .text.hsmci_start_write_blocks
-                0x00402648       0x40 src/asf/sam/drivers/hsmci/hsmci.o
-                0x00402648                hsmci_start_write_blocks
+                0x0040228c       0x40 src/asf/sam/drivers/hsmci/hsmci.o
+                0x0040228c                hsmci_start_write_blocks
  .text.hsmci_wait_end_of_write_blocks
-                0x00402688       0x64 src/asf/sam/drivers/hsmci/hsmci.o
-                0x00402688                hsmci_wait_end_of_write_blocks
+                0x004022cc       0x64 src/asf/sam/drivers/hsmci/hsmci.o
+                0x004022cc                hsmci_wait_end_of_write_blocks
  .text.pio_set_peripheral
-                0x004026ec       0x80 src/asf/sam/drivers/pio/pio.o
-                0x004026ec                pio_set_peripheral
+                0x00402330       0x80 src/asf/sam/drivers/pio/pio.o
+                0x00402330                pio_set_peripheral
  .text.pio_set_input
-                0x0040276c       0x2c src/asf/sam/drivers/pio/pio.o
-                0x0040276c                pio_set_input
+                0x004023b0       0x2c src/asf/sam/drivers/pio/pio.o
+                0x004023b0                pio_set_input
  .text.pio_set_output
-                0x00402798       0x24 src/asf/sam/drivers/pio/pio.o
-                0x00402798                pio_set_output
+                0x004023dc       0x24 src/asf/sam/drivers/pio/pio.o
+                0x004023dc                pio_set_output
  .text.pio_get_interrupt_status
-                0x004027bc        0x4 src/asf/sam/drivers/pio/pio.o
-                0x004027bc                pio_get_interrupt_status
+                0x00402400        0x4 src/asf/sam/drivers/pio/pio.o
+                0x00402400                pio_get_interrupt_status
  .text.pio_get_interrupt_mask
-                0x004027c0        0x4 src/asf/sam/drivers/pio/pio.o
-                0x004027c0                pio_get_interrupt_mask
+                0x00402404        0x4 src/asf/sam/drivers/pio/pio.o
+                0x00402404                pio_get_interrupt_mask
  .text.pio_set_pin_high
-                0x004027c4       0x1a src/asf/sam/drivers/pio/pio.o
-                0x004027c4                pio_set_pin_high
- *fill*         0x004027de        0x2 00
+                0x00402408       0x1a src/asf/sam/drivers/pio/pio.o
+                0x00402408                pio_set_pin_high
+ *fill*         0x00402422        0x2 00
  .text.pio_configure_pin
-                0x004027e0       0xb0 src/asf/sam/drivers/pio/pio.o
-                0x004027e0                pio_configure_pin
+                0x00402424       0xb0 src/asf/sam/drivers/pio/pio.o
+                0x00402424                pio_configure_pin
  .text.pio_handler_process
-                0x00402890       0x4c src/asf/sam/drivers/pio/pio_handler.o
-                0x00402890                pio_handler_process
+                0x004024d4       0x4c src/asf/sam/drivers/pio/pio_handler.o
+                0x004024d4                pio_handler_process
  .text.PIOA_Handler
-                0x004028dc       0x14 src/asf/sam/drivers/pio/pio_handler.o
-                0x004028dc                PIOA_Handler
+                0x00402520       0x14 src/asf/sam/drivers/pio/pio_handler.o
+                0x00402520                PIOA_Handler
  .text.PIOB_Handler
-                0x004028f0       0x14 src/asf/sam/drivers/pio/pio_handler.o
-                0x004028f0                PIOB_Handler
+                0x00402534       0x14 src/asf/sam/drivers/pio/pio_handler.o
+                0x00402534                PIOB_Handler
  .text.pmc_switch_mck_to_pllack
-                0x00402904       0x48 src/asf/sam/drivers/pmc/pmc.o
-                0x00402904                pmc_switch_mck_to_pllack
+                0x00402548       0x48 src/asf/sam/drivers/pmc/pmc.o
+                0x00402548                pmc_switch_mck_to_pllack
  .text.pmc_switch_sclk_to_32kxtal
-                0x0040294c       0x24 src/asf/sam/drivers/pmc/pmc.o
-                0x0040294c                pmc_switch_sclk_to_32kxtal
+                0x00402590       0x24 src/asf/sam/drivers/pmc/pmc.o
+                0x00402590                pmc_switch_sclk_to_32kxtal
  .text.pmc_switch_mainck_to_fastrc
-                0x00402970       0x6c src/asf/sam/drivers/pmc/pmc.o
-                0x00402970                pmc_switch_mainck_to_fastrc
+                0x004025b4       0x6c src/asf/sam/drivers/pmc/pmc.o
+                0x004025b4                pmc_switch_mainck_to_fastrc
  .text.pmc_switch_mainck_to_xtal
-                0x004029dc       0x4c src/asf/sam/drivers/pmc/pmc.o
-                0x004029dc                pmc_switch_mainck_to_xtal
+                0x00402620       0x4c src/asf/sam/drivers/pmc/pmc.o
+                0x00402620                pmc_switch_mainck_to_xtal
  .text.pmc_osc_is_ready_mainck
-                0x00402a28       0x10 src/asf/sam/drivers/pmc/pmc.o
-                0x00402a28                pmc_osc_is_ready_mainck
+                0x0040266c       0x10 src/asf/sam/drivers/pmc/pmc.o
+                0x0040266c                pmc_osc_is_ready_mainck
  .text.pmc_disable_pllack
-                0x00402a38       0x10 src/asf/sam/drivers/pmc/pmc.o
-                0x00402a38                pmc_disable_pllack
+                0x0040267c       0x10 src/asf/sam/drivers/pmc/pmc.o
+                0x0040267c                pmc_disable_pllack
  .text.pmc_is_locked_pllack
-                0x00402a48       0x10 src/asf/sam/drivers/pmc/pmc.o
-                0x00402a48                pmc_is_locked_pllack
+                0x0040268c       0x10 src/asf/sam/drivers/pmc/pmc.o
+                0x0040268c                pmc_is_locked_pllack
  .text.pmc_disable_pllbck
-                0x00402a58        0xc src/asf/sam/drivers/pmc/pmc.o
-                0x00402a58                pmc_disable_pllbck
+                0x0040269c        0xc src/asf/sam/drivers/pmc/pmc.o
+                0x0040269c                pmc_disable_pllbck
  .text.pmc_is_locked_pllbck
-                0x00402a64       0x10 src/asf/sam/drivers/pmc/pmc.o
-                0x00402a64                pmc_is_locked_pllbck
+                0x004026a8       0x10 src/asf/sam/drivers/pmc/pmc.o
+                0x004026a8                pmc_is_locked_pllbck
  .text.pmc_enable_periph_clk
-                0x00402a74       0x44 src/asf/sam/drivers/pmc/pmc.o
-                0x00402a74                pmc_enable_periph_clk
+                0x004026b8       0x44 src/asf/sam/drivers/pmc/pmc.o
+                0x004026b8                pmc_enable_periph_clk
  .text.pmc_disable_periph_clk
-                0x00402ab8       0x40 src/asf/sam/drivers/pmc/pmc.o
-                0x00402ab8                pmc_disable_periph_clk
+                0x004026fc       0x40 src/asf/sam/drivers/pmc/pmc.o
+                0x004026fc                pmc_disable_periph_clk
  .text.pmc_switch_udpck_to_pllbck
-                0x00402af8       0x14 src/asf/sam/drivers/pmc/pmc.o
-                0x00402af8                pmc_switch_udpck_to_pllbck
+                0x0040273c       0x14 src/asf/sam/drivers/pmc/pmc.o
+                0x0040273c                pmc_switch_udpck_to_pllbck
  .text.pmc_enable_udpck
-                0x00402b0c        0xc src/asf/sam/drivers/pmc/pmc.o
-                0x00402b0c                pmc_enable_udpck
+                0x00402750        0xc src/asf/sam/drivers/pmc/pmc.o
+                0x00402750                pmc_enable_udpck
  .text.pmc_set_fast_startup_input
-                0x00402b18       0x18 src/asf/sam/drivers/pmc/pmc.o
-                0x00402b18                pmc_set_fast_startup_input
+                0x0040275c       0x18 src/asf/sam/drivers/pmc/pmc.o
+                0x0040275c                pmc_set_fast_startup_input
  .text.rtc_get_time
-                0x00402b30       0x50 src/asf/sam/drivers/rtc/rtc.o
-                0x00402b30                rtc_get_time
+                0x00402774       0x50 src/asf/sam/drivers/rtc/rtc.o
+                0x00402774                rtc_get_time
  .text.rtc_get_date
-                0x00402b80       0x64 src/asf/sam/drivers/rtc/rtc.o
-                0x00402b80                rtc_get_date
+                0x004027c4       0x64 src/asf/sam/drivers/rtc/rtc.o
+                0x004027c4                rtc_get_date
  .text.cpu_irq_save
-                0x00402be4       0x14 src/asf/sam/drivers/udp/udp_device.o
+                0x00402828       0x14 src/asf/sam/drivers/udp/udp_device.o
  .text.udd_ctrl_init
-                0x00402bf8       0x1c src/asf/sam/drivers/udp/udp_device.o
+                0x0040283c       0x1c src/asf/sam/drivers/udp/udp_device.o
  .text.udd_ctrl_stall_data
-                0x00402c14       0x40 src/asf/sam/drivers/udp/udp_device.o
+                0x00402858       0x40 src/asf/sam/drivers/udp/udp_device.o
  .text.udd_ctrl_send_zlp_in
-                0x00402c54       0x40 src/asf/sam/drivers/udp/udp_device.o
+                0x00402898       0x40 src/asf/sam/drivers/udp/udp_device.o
  .text.udd_ctrl_endofrequest
-                0x00402c94       0x10 src/asf/sam/drivers/udp/udp_device.o
+                0x004028d8       0x10 src/asf/sam/drivers/udp/udp_device.o
  .text.udd_ep_ack_out_received
-                0x00402ca4       0x80 src/asf/sam/drivers/udp/udp_device.o
+                0x004028e8       0x80 src/asf/sam/drivers/udp/udp_device.o
  .text.udd_ep_in_sent
-                0x00402d24      0x168 src/asf/sam/drivers/udp/udp_device.o
+                0x00402968      0x168 src/asf/sam/drivers/udp/udp_device.o
  .text.cpu_irq_restore
-                0x00402e8c       0x14 src/asf/sam/drivers/udp/udp_device.o
+                0x00402ad0       0x14 src/asf/sam/drivers/udp/udp_device.o
  .text.udd_sleep_mode
-                0x00402ea0       0x44 src/asf/sam/drivers/udp/udp_device.o
+                0x00402ae4       0x44 src/asf/sam/drivers/udp/udp_device.o
  .text.udd_ctrl_in_sent
-                0x00402ee4      0x1ac src/asf/sam/drivers/udp/udp_device.o
+                0x00402b28      0x1ac src/asf/sam/drivers/udp/udp_device.o
  .text.udd_ep_finish_job
-                0x00403090       0x3c src/asf/sam/drivers/udp/udp_device.o
+                0x00402cd4       0x3c src/asf/sam/drivers/udp/udp_device.o
  .text.UDP_Handler
-                0x004030cc      0x7b8 src/asf/sam/drivers/udp/udp_device.o
-                0x004030cc                UDP_Handler
+                0x00402d10      0x7b8 src/asf/sam/drivers/udp/udp_device.o
+                0x00402d10                UDP_Handler
  .text.udd_include_vbus_monitoring
-                0x00403884        0x4 src/asf/sam/drivers/udp/udp_device.o
-                0x00403884                udd_include_vbus_monitoring
+                0x004034c8        0x4 src/asf/sam/drivers/udp/udp_device.o
+                0x004034c8                udd_include_vbus_monitoring
  .text.udd_enable
-                0x00403888       0x84 src/asf/sam/drivers/udp/udp_device.o
-                0x00403888                udd_enable
+                0x004034cc       0x84 src/asf/sam/drivers/udp/udp_device.o
+                0x004034cc                udd_enable
  .text.udd_attach
-                0x0040390c       0x60 src/asf/sam/drivers/udp/udp_device.o
-                0x0040390c                udd_attach
+                0x00403550       0x60 src/asf/sam/drivers/udp/udp_device.o
+                0x00403550                udd_attach
  .text.udd_is_high_speed
-                0x0040396c        0x4 src/asf/sam/drivers/udp/udp_device.o
-                0x0040396c                udd_is_high_speed
+                0x004035b0        0x4 src/asf/sam/drivers/udp/udp_device.o
+                0x004035b0                udd_is_high_speed
  .text.udd_set_address
-                0x00403970       0x38 src/asf/sam/drivers/udp/udp_device.o
-                0x00403970                udd_set_address
+                0x004035b4       0x38 src/asf/sam/drivers/udp/udp_device.o
+                0x004035b4                udd_set_address
  .text.udd_getaddress
-                0x004039a8       0x18 src/asf/sam/drivers/udp/udp_device.o
-                0x004039a8                udd_getaddress
+                0x004035ec       0x18 src/asf/sam/drivers/udp/udp_device.o
+                0x004035ec                udd_getaddress
  .text.udd_get_frame_number
-                0x004039c0       0x10 src/asf/sam/drivers/udp/udp_device.o
-                0x004039c0                udd_get_frame_number
+                0x00403604       0x10 src/asf/sam/drivers/udp/udp_device.o
+                0x00403604                udd_get_frame_number
  .text.udd_get_micro_frame_number
-                0x004039d0        0x4 src/asf/sam/drivers/udp/udp_device.o
-                0x004039d0                udd_get_micro_frame_number
+                0x00403614        0x4 src/asf/sam/drivers/udp/udp_device.o
+                0x00403614                udd_get_micro_frame_number
  .text.udd_set_setup_payload
-                0x004039d4        0xc src/asf/sam/drivers/udp/udp_device.o
-                0x004039d4                udd_set_setup_payload
+                0x00403618        0xc src/asf/sam/drivers/udp/udp_device.o
+                0x00403618                udd_set_setup_payload
  .text.udd_ep_alloc
-                0x004039e0       0xd0 src/asf/sam/drivers/udp/udp_device.o
-                0x004039e0                udd_ep_alloc
+                0x00403624       0xd0 src/asf/sam/drivers/udp/udp_device.o
+                0x00403624                udd_ep_alloc
  .text.udd_ep_free
-                0x00403ab0       0x3c src/asf/sam/drivers/udp/udp_device.o
-                0x00403ab0                udd_ep_free
+                0x004036f4       0x3c src/asf/sam/drivers/udp/udp_device.o
+                0x004036f4                udd_ep_free
  .text.udd_ep_is_halted
-                0x00403aec       0x40 src/asf/sam/drivers/udp/udp_device.o
-                0x00403aec                udd_ep_is_halted
+                0x00403730       0x40 src/asf/sam/drivers/udp/udp_device.o
+                0x00403730                udd_ep_is_halted
  .text.udd_ep_set_halt
-                0x00403b2c       0xa0 src/asf/sam/drivers/udp/udp_device.o
-                0x00403b2c                udd_ep_set_halt
+                0x00403770       0xa0 src/asf/sam/drivers/udp/udp_device.o
+                0x00403770                udd_ep_set_halt
  .text.udd_ep_clear_halt
-                0x00403bcc       0xc8 src/asf/sam/drivers/udp/udp_device.o
-                0x00403bcc                udd_ep_clear_halt
+                0x00403810       0xc8 src/asf/sam/drivers/udp/udp_device.o
+                0x00403810                udd_ep_clear_halt
  .text.udd_ep_run
-                0x00403c94       0xf4 src/asf/sam/drivers/udp/udp_device.o
-                0x00403c94                udd_ep_run
+                0x004038d8       0xf4 src/asf/sam/drivers/udp/udp_device.o
+                0x004038d8                udd_ep_run
  .text.udd_ep_abort
-                0x00403d88      0x148 src/asf/sam/drivers/udp/udp_device.o
-                0x00403d88                udd_ep_abort
+                0x004039cc      0x148 src/asf/sam/drivers/udp/udp_device.o
+                0x004039cc                udd_ep_abort
  .text.flash_is_gpnvm_set
-                0x00403ed0       0x40 src/asf/sam/services/flash_efc/flash_efc.o
-                0x00403ed0                flash_is_gpnvm_set
+                0x00403b14       0x40 src/asf/sam/services/flash_efc/flash_efc.o
+                0x00403b14                flash_is_gpnvm_set
  .text.flash_clear_gpnvm
-                0x00403f10       0x38 src/asf/sam/services/flash_efc/flash_efc.o
-                0x00403f10                flash_clear_gpnvm
- .text._sbrk    0x00403f48       0x1c src/asf/sam/utils/syscalls/gcc/syscalls.o
-                0x00403f48                _sbrk
- .text._close   0x00403f64        0x6 src/asf/sam/utils/syscalls/gcc/syscalls.o
-                0x00403f64                _close
- .text._fstat   0x00403f6a        0xa src/asf/sam/utils/syscalls/gcc/syscalls.o
-                0x00403f6a                _fstat
- .text._isatty  0x00403f74        0x4 src/asf/sam/utils/syscalls/gcc/syscalls.o
-                0x00403f74                _isatty
- .text._lseek   0x00403f78        0x4 src/asf/sam/utils/syscalls/gcc/syscalls.o
-                0x00403f78                _lseek
- .text._exit    0x00403f7c       0x14 src/asf/sam/utils/syscalls/gcc/syscalls.o
-                0x00403f7c                _exit
- .text._kill    0x00403f90        0x2 src/asf/sam/utils/syscalls/gcc/syscalls.o
-                0x00403f90                _kill
- .text._getpid  0x00403f92        0x6 src/asf/sam/utils/syscalls/gcc/syscalls.o
-                0x00403f92                _getpid
+                0x00403b54       0x38 src/asf/sam/services/flash_efc/flash_efc.o
+                0x00403b54                flash_clear_gpnvm
+ .text._sbrk    0x00403b8c       0x1c src/asf/sam/utils/syscalls/gcc/syscalls.o
+                0x00403b8c                _sbrk
+ .text._close   0x00403ba8        0x6 src/asf/sam/utils/syscalls/gcc/syscalls.o
+                0x00403ba8                _close
+ .text._fstat   0x00403bae        0xa src/asf/sam/utils/syscalls/gcc/syscalls.o
+                0x00403bae                _fstat
+ .text._isatty  0x00403bb8        0x4 src/asf/sam/utils/syscalls/gcc/syscalls.o
+                0x00403bb8                _isatty
+ .text._lseek   0x00403bbc        0x4 src/asf/sam/utils/syscalls/gcc/syscalls.o
+                0x00403bbc                _lseek
+ .text._exit    0x00403bc0       0x14 src/asf/sam/utils/syscalls/gcc/syscalls.o
+                0x00403bc0                _exit
+ .text._kill    0x00403bd4        0x2 src/asf/sam/utils/syscalls/gcc/syscalls.o
+                0x00403bd4                _kill
+ .text._getpid  0x00403bd6        0x6 src/asf/sam/utils/syscalls/gcc/syscalls.o
+                0x00403bd6                _getpid
  .text.disk_initialize
-                0x00403f98       0x34 src/asf/thirdparty/fatfs/fatfs-port-r0.09/diskio.o
-                0x00403f98                disk_initialize
+                0x00403bdc       0x34 src/asf/thirdparty/fatfs/fatfs-port-r0.09/diskio.o
+                0x00403bdc                disk_initialize
  .text.disk_status
-                0x00403fcc       0x1c src/asf/thirdparty/fatfs/fatfs-port-r0.09/diskio.o
-                0x00403fcc                disk_status
+                0x00403c10       0x1c src/asf/thirdparty/fatfs/fatfs-port-r0.09/diskio.o
+                0x00403c10                disk_status
  .text.disk_read
-                0x00403fe8       0x68 src/asf/thirdparty/fatfs/fatfs-port-r0.09/diskio.o
-                0x00403fe8                disk_read
+                0x00403c2c       0x68 src/asf/thirdparty/fatfs/fatfs-port-r0.09/diskio.o
+                0x00403c2c                disk_read
  .text.disk_write
-                0x00404050       0x68 src/asf/thirdparty/fatfs/fatfs-port-r0.09/diskio.o
-                0x00404050                disk_write
+                0x00403c94       0x68 src/asf/thirdparty/fatfs/fatfs-port-r0.09/diskio.o
+                0x00403c94                disk_write
  .text.disk_ioctl
-                0x004040b8       0x60 src/asf/thirdparty/fatfs/fatfs-port-r0.09/diskio.o
-                0x004040b8                disk_ioctl
+                0x00403cfc       0x60 src/asf/thirdparty/fatfs/fatfs-port-r0.09/diskio.o
+                0x00403cfc                disk_ioctl
  .text.get_fattime
-                0x00404118       0x58 src/asf/thirdparty/fatfs/fatfs-port-r0.09/sam/fattime.o
-                0x00404118                get_fattime
- .text.mem_cpy  0x00404170       0x12 src/asf/thirdparty/fatfs/fatfs-r0.09/src/ff.o
+                0x00403d5c       0x58 src/asf/thirdparty/fatfs/fatfs-port-r0.09/sam/fattime.o
+                0x00403d5c                get_fattime
+ .text.mem_cpy  0x00403db4       0x12 src/asf/thirdparty/fatfs/fatfs-r0.09/src/ff.o
  .text.clust2sect
-                0x00404182       0x18 src/asf/thirdparty/fatfs/fatfs-r0.09/src/ff.o
- .text.sum_sfn  0x0040419a       0x1e src/asf/thirdparty/fatfs/fatfs-r0.09/src/ff.o
+                0x00403dc6       0x18 src/asf/thirdparty/fatfs/fatfs-r0.09/src/ff.o
+ .text.sum_sfn  0x00403dde       0x1e src/asf/thirdparty/fatfs/fatfs-r0.09/src/ff.o
  .text.move_window
-                0x004041b8       0x80 src/asf/thirdparty/fatfs/fatfs-r0.09/src/ff.o
- .text.sync     0x00404238       0xc4 src/asf/thirdparty/fatfs/fatfs-r0.09/src/ff.o
+                0x00403dfc       0x80 src/asf/thirdparty/fatfs/fatfs-r0.09/src/ff.o
+ .text.sync     0x00403e7c       0xc4 src/asf/thirdparty/fatfs/fatfs-r0.09/src/ff.o
  .text.validate
-                0x004042fc       0x28 src/asf/thirdparty/fatfs/fatfs-r0.09/src/ff.o
+                0x00403f40       0x28 src/asf/thirdparty/fatfs/fatfs-r0.09/src/ff.o
  .text.check_fs
-                0x00404324       0x8c src/asf/thirdparty/fatfs/fatfs-r0.09/src/ff.o
+                0x00403f68       0x8c src/asf/thirdparty/fatfs/fatfs-r0.09/src/ff.o
  .text.chk_mounted
-                0x004043b0      0x318 src/asf/thirdparty/fatfs/fatfs-r0.09/src/ff.o
- .text.get_fat  0x004046c8       0xd8 src/asf/thirdparty/fatfs/fatfs-r0.09/src/ff.o
- .text.dir_sdi  0x004047a0       0x8c src/asf/thirdparty/fatfs/fatfs-r0.09/src/ff.o
- .text.put_fat  0x0040482c       0xf8 src/asf/thirdparty/fatfs/fatfs-r0.09/src/ff.o
+                0x00403ff4      0x318 src/asf/thirdparty/fatfs/fatfs-r0.09/src/ff.o
+ .text.get_fat  0x0040430c       0xd8 src/asf/thirdparty/fatfs/fatfs-r0.09/src/ff.o
+ .text.dir_sdi  0x004043e4       0x8c src/asf/thirdparty/fatfs/fatfs-r0.09/src/ff.o
+ .text.put_fat  0x00404470       0xf8 src/asf/thirdparty/fatfs/fatfs-r0.09/src/ff.o
  .text.create_chain
-                0x00404924       0xb0 src/asf/thirdparty/fatfs/fatfs-r0.09/src/ff.o
+                0x00404568       0xb0 src/asf/thirdparty/fatfs/fatfs-r0.09/src/ff.o
  .text.remove_chain
-                0x004049d4       0x70 src/asf/thirdparty/fatfs/fatfs-r0.09/src/ff.o
+                0x00404618       0x70 src/asf/thirdparty/fatfs/fatfs-r0.09/src/ff.o
  .text.dir_next
-                0x00404a44      0x10c src/asf/thirdparty/fatfs/fatfs-r0.09/src/ff.o
+                0x00404688      0x10c src/asf/thirdparty/fatfs/fatfs-r0.09/src/ff.o
  .text.dir_find.part.4
-                0x00404b50      0x140 src/asf/thirdparty/fatfs/fatfs-r0.09/src/ff.o
+                0x00404794      0x140 src/asf/thirdparty/fatfs/fatfs-r0.09/src/ff.o
  .text.follow_path
-                0x00404c90      0x290 src/asf/thirdparty/fatfs/fatfs-r0.09/src/ff.o
+                0x004048d4      0x290 src/asf/thirdparty/fatfs/fatfs-r0.09/src/ff.o
  .text.dir_register
-                0x00404f20      0x278 src/asf/thirdparty/fatfs/fatfs-r0.09/src/ff.o
- .text.f_mount  0x00405198       0x20 src/asf/thirdparty/fatfs/fatfs-r0.09/src/ff.o
-                0x00405198                f_mount
- .text.f_open   0x004051b8      0x170 src/asf/thirdparty/fatfs/fatfs-r0.09/src/ff.o
-                0x004051b8                f_open
- .text.f_write  0x00405328      0x1c8 src/asf/thirdparty/fatfs/fatfs-r0.09/src/ff.o
-                0x00405328                f_write
- .text.f_sync   0x004054f0       0xc0 src/asf/thirdparty/fatfs/fatfs-r0.09/src/ff.o
-                0x004054f0                f_sync
- .text.f_close  0x004055b0       0x14 src/asf/thirdparty/fatfs/fatfs-r0.09/src/ff.o
-                0x004055b0                f_close
+                0x00404b64      0x278 src/asf/thirdparty/fatfs/fatfs-r0.09/src/ff.o
+ .text.f_mount  0x00404ddc       0x20 src/asf/thirdparty/fatfs/fatfs-r0.09/src/ff.o
+                0x00404ddc                f_mount
+ .text.f_open   0x00404dfc      0x170 src/asf/thirdparty/fatfs/fatfs-r0.09/src/ff.o
+                0x00404dfc                f_open
+ .text.f_write  0x00404f6c      0x1c8 src/asf/thirdparty/fatfs/fatfs-r0.09/src/ff.o
+                0x00404f6c                f_write
+ .text.f_sync   0x00405134       0xc0 src/asf/thirdparty/fatfs/fatfs-r0.09/src/ff.o
+                0x00405134                f_sync
+ .text.f_close  0x004051f4       0x14 src/asf/thirdparty/fatfs/fatfs-r0.09/src/ff.o
+                0x004051f4                f_close
  .text.f_opendir
-                0x004055c4       0x80 src/asf/thirdparty/fatfs/fatfs-r0.09/src/ff.o
-                0x004055c4                f_opendir
- .text.f_mkdir  0x00405644      0x204 src/asf/thirdparty/fatfs/fatfs-r0.09/src/ff.o
-                0x00405644                f_mkdir
+                0x00405208       0x80 src/asf/thirdparty/fatfs/fatfs-r0.09/src/ff.o
+                0x00405208                f_opendir
+ .text.f_mkdir  0x00405288      0x204 src/asf/thirdparty/fatfs/fatfs-r0.09/src/ff.o
+                0x00405288                f_mkdir
+ .text.f_putc   0x0040548c       0x34 src/asf/thirdparty/fatfs/fatfs-r0.09/src/ff.o
+                0x0040548c                f_putc
+ .text.f_puts   0x004054c0       0x28 src/asf/thirdparty/fatfs/fatfs-r0.09/src/ff.o
+                0x004054c0                f_puts
  .text.ff_convert
-                0x00405848       0x3c src/asf/thirdparty/fatfs/fatfs-r0.09/src/option/ccsbcs.o
-                0x00405848                ff_convert
+                0x004054e8       0x3c src/asf/thirdparty/fatfs/fatfs-r0.09/src/option/ccsbcs.o
+                0x004054e8                ff_convert
  .text.ff_wtoupper
-                0x00405884       0x24 src/asf/thirdparty/fatfs/fatfs-r0.09/src/option/ccsbcs.o
-                0x00405884                ff_wtoupper
+                0x00405524       0x24 src/asf/thirdparty/fatfs/fatfs-r0.09/src/option/ccsbcs.o
+                0x00405524                ff_wtoupper
  .text.sd_mmc_test_unit_ready
-                0x004058a8       0x38 src/sd_mmc_mem.o
-                0x004058a8                sd_mmc_test_unit_ready
+                0x00405548       0x38 src/sd_mmc_mem.o
+                0x00405548                sd_mmc_test_unit_ready
  .text.sd_mmc_test_unit_ready_0
-                0x004058e0       0x10 src/sd_mmc_mem.o
-                0x004058e0                sd_mmc_test_unit_ready_0
+                0x00405580       0x10 src/sd_mmc_mem.o
+                0x00405580                sd_mmc_test_unit_ready_0
  .text.sd_mmc_read_capacity
-                0x004058f0       0x20 src/sd_mmc_mem.o
-                0x004058f0                sd_mmc_read_capacity
+                0x00405590       0x20 src/sd_mmc_mem.o
+                0x00405590                sd_mmc_read_capacity
  .text.sd_mmc_read_capacity_0
-                0x00405910       0x10 src/sd_mmc_mem.o
-                0x00405910                sd_mmc_read_capacity_0
+                0x004055b0       0x10 src/sd_mmc_mem.o
+                0x004055b0                sd_mmc_read_capacity_0
  .text.sd_mmc_wr_protect_0
-                0x00405920       0x10 src/sd_mmc_mem.o
-                0x00405920                sd_mmc_wr_protect_0
+                0x004055c0       0x10 src/sd_mmc_mem.o
+                0x004055c0                sd_mmc_wr_protect_0
  .text.sd_mmc_mem_2_ram
-                0x00405930       0x3c src/sd_mmc_mem.o
-                0x00405930                sd_mmc_mem_2_ram
+                0x004055d0       0x3c src/sd_mmc_mem.o
+                0x004055d0                sd_mmc_mem_2_ram
  .text.sd_mmc_mem_2_ram_0
-                0x0040596c       0x14 src/sd_mmc_mem.o
-                0x0040596c                sd_mmc_mem_2_ram_0
+                0x0040560c       0x14 src/sd_mmc_mem.o
+                0x0040560c                sd_mmc_mem_2_ram_0
  .text.sd_mmc_ram_2_mem
-                0x00405980       0x3c src/sd_mmc_mem.o
-                0x00405980                sd_mmc_ram_2_mem
+                0x00405620       0x3c src/sd_mmc_mem.o
+                0x00405620                sd_mmc_ram_2_mem
  .text.sd_mmc_ram_2_mem_0
-                0x004059bc       0x14 src/sd_mmc_mem.o
-                0x004059bc                sd_mmc_ram_2_mem_0
+                0x0040565c       0x14 src/sd_mmc_mem.o
+                0x0040565c                sd_mmc_ram_2_mem_0
  .text.startup.main
-                0x004059d0       0xbc src/stdio_usb_example.o
-                0x004059d0                main
- .text          0x00405a8c        0xc c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-atexit.o)
-                0x00405a8c                atexit
- .text          0x00405a98       0x30 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-fini.o)
-                0x00405a98                __libc_fini_array
- .text          0x00405ac8       0x4c c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-init.o)
-                0x00405ac8                __libc_init_array
- .text          0x00405b14       0x12 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-memcpy.o)
-                0x00405b14                memcpy
- .text          0x00405b26       0x10 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-memset.o)
-                0x00405b26                memset
- *fill*         0x00405b36        0x2 00
- .text          0x00405b38       0x3c c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-printf.o)
-                0x00405b38                _printf_r
-                0x00405b52                printf
- .text          0x00405b74       0x74 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-puts.o)
-                0x00405b74                _puts_r
-                0x00405bd8                puts
- .text          0x00405be8       0x10 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-setbuf.o)
-                0x00405be8                setbuf
- .text          0x00405bf8       0xec c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-setvbuf.o)
-                0x00405bf8                setvbuf
- .text          0x00405ce4       0x10 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-strlen.o)
-                0x00405ce4                strlen
- .text          0x00405cf4      0x9c4 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-vfiprintf.o)
-                0x00405cf4                __sprint_r
-                0x00405d60                _vfiprintf_r
-                0x0040669c                vfiprintf
- .text          0x004066b8      0x958 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-vfprintf.o)
-                0x004066b8                _vfprintf_r
-                0x00406ff4                vfprintf
- .text          0x00407010       0xb4 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-wbuf.o)
-                0x00407010                __swbuf_r
-                0x004070b2                __swbuf
- .text          0x004070c4       0xb8 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-wsetup.o)
-                0x004070c4                __swsetup_r
- .text          0x0040717c       0x9c c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-__atexit.o)
-                0x0040717c                __register_exitproc
- .text.startup  0x00407218       0x14 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-__call_atexit.o)
- .text          0x0040722c        0xe c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-abort.o)
-                0x0040722c                abort
- *fill*         0x0040723a        0x2 00
- .text          0x0040723c      0x154 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-fflush.o)
-                0x0040723c                _fflush_r
-                0x0040736c                fflush
- .text          0x00407390      0x18c c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-findfp.o)
-                0x00407398                _cleanup_r
-                0x004073ec                __sfmoreglue
-                0x00407416                _cleanup
-                0x00407424                __sinit
-                0x00407470                __sfp
-                0x004074ec                __sfp_lock_acquire
-                0x004074ee                __sfp_lock_release
-                0x004074f0                __sinit_lock_acquire
-                0x004074f2                __sinit_lock_release
-                0x004074f4                __fp_lock_all
-                0x00407508                __fp_unlock_all
- .text          0x0040751c       0xe4 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-fputwc.o)
-                0x0040751c                _fputwc_r
-                0x004075d8                fputwc
- .text          0x00407600      0x204 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-freer.o)
-                0x00407600                _malloc_trim_r
-                0x0040769c                _free_r
- .text          0x00407804      0x2b0 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-fvwrite.o)
-                0x00407804                __sfvwrite_r
- .text          0x00407ab4       0x8a c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-fwalk.o)
-                0x00407ab4                _fwalk
-                0x00407af8                _fwalk_reent
- *fill*         0x00407b3e        0x2 00
- .text          0x00407b40       0x88 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-locale.o)
-                0x00407b40                _setlocale_r
-                0x00407b84                __locale_charset
-                0x00407b8c                __locale_mb_cur_max
-                0x00407b98                __locale_msgcharset
-                0x00407ba0                __locale_cjk_lang
-                0x00407ba4                _localeconv_r
-                0x00407bac                setlocale
-                0x00407bc0                localeconv
- .text          0x00407bc8       0xd8 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-makebuf.o)
-                0x00407bc8                __smakebuf_r
- .text          0x00407ca0       0x20 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-malloc.o)
-                0x00407ca0                malloc
-                0x00407cb0                free
- .text          0x00407cc0      0x3f8 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-mallocr.o)
-                0x00407cc0                _malloc_r
- .text          0x004080b8       0x1c c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-memchr.o)
-                0x004080b8                memchr
- .text          0x004080d4       0x32 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-memmove.o)
-                0x004080d4                memmove
- .text          0x00408106        0x4 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-mlock.o)
-                0x00408106                __malloc_lock
-                0x00408108                __malloc_unlock
- *fill*         0x0040810a        0x2 00
- .text          0x0040810c      0x2dc c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-reallocr.o)
-                0x0040810c                _realloc_r
- .text          0x004083e8       0x20 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-sbrkr.o)
-                0x004083e8                _sbrk_r
- .text          0x00408408      0x144 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-signal.o)
-                0x00408408                _init_signal_r
-                0x0040843a                _signal_r
-                0x0040846e                _raise_r
-                0x004084c0                __sigtramp_r
-                0x0040850e                raise
-                0x0040851c                signal
-                0x00408530                _init_signal
-                0x0040853c                __sigtramp
- .text          0x0040854c       0x28 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-signalr.o)
-                0x0040854c                _kill_r
-                0x00408570                _getpid_r
- .text          0x00408574       0x8e c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-stdio.o)
-                0x00408574                __sread
-                0x00408596                __seofread
-                0x0040859a                __swrite
-                0x004085d6                __sseek
-                0x004085fa                __sclose
- .text          0x00408602       0x16 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-strcmp.o)
-                0x00408602                strcmp
- .text          0x00408618       0x68 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-wcrtomb.o)
-                0x00408618                _wcrtomb_r
-                0x00408664                wcrtomb
- .text          0x00408680       0x44 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-wctomb_r.o)
-                0x00408680                __ascii_wctomb
-                0x0040869a                _wctomb_r
- .text          0x004086c4       0x24 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-writer.o)
-                0x004086c4                _write_r
- .text          0x004086e8       0x20 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-closer.o)
-                0x004086e8                _close_r
- .text          0x00408708       0x94 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-fclose.o)
-                0x00408708                _fclose_r
-                0x0040878e                fclose
- .text          0x0040879c       0x24 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-fstatr.o)
-                0x0040879c                _fstat_r
- .text          0x004087c0       0x20 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-isattyr.o)
-                0x004087c0                _isatty_r
- .text          0x004087e0       0x24 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-lseekr.o)
-                0x004087e0                _lseek_r
- .text          0x00408804       0x24 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-readr.o)
-                0x00408804                _read_r
- .text          0x00408828       0x2c c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/thumb\libgcc.a(_aeabi_uldivmod.o)
-                0x00408828                __aeabi_uldivmod
- .text          0x00408854       0x60 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/thumb\libgcc.a(bpabi.o)
-                0x00408854                __gnu_ldivmod_helper
-                0x00408884                __gnu_uldivmod_helper
- .text          0x004088b4        0x4 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/thumb\libgcc.a(_dvmd_tls.o)
-                0x004088b4                __aeabi_idiv0
-                0x004088b4                __aeabi_ldiv0
- .text          0x004088b8      0x2c8 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/thumb\libgcc.a(_divdi3.o)
-                0x004088b8                __divdi3
- .text          0x00408b80      0x29c c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/thumb\libgcc.a(_udivdi3.o)
-                0x00408b80                __udivdi3
- .text          0x00408e1c      0x9fc c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/thumb\libgcc.a(unwind-arm.o)
-                0x004090e4                _Unwind_GetCFA
-                0x004090e8                __gnu_Unwind_RaiseException
-                0x00409148                __gnu_Unwind_ForcedUnwind
-                0x00409160                __gnu_Unwind_Resume
-                0x004091a4                __gnu_Unwind_Resume_or_Rethrow
-                0x004091bc                _Unwind_Complete
-                0x004091c0                _Unwind_DeleteException
-                0x004091d0                _Unwind_VRS_Get
-                0x00409214                _Unwind_VRS_Set
-                0x00409528                __aeabi_unwind_cpp_pr2
-                0x00409530                __aeabi_unwind_cpp_pr1
-                0x00409538                __aeabi_unwind_cpp_pr0
-                0x00409540                __gnu_Unwind_Backtrace
-                0x004095b0                _Unwind_VRS_Pop
- .text          0x00409818      0x1ac c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/thumb\libgcc.a(libunwind.o)
-                0x00409818                __restore_core_regs
-                0x00409818                restore_core_regs
-                0x00409830                __gnu_Unwind_Restore_VFP
-                0x00409838                __gnu_Unwind_Save_VFP
-                0x00409840                __gnu_Unwind_Restore_VFP_D
-                0x00409848                __gnu_Unwind_Save_VFP_D
-                0x00409850                __gnu_Unwind_Restore_VFP_D_16_to_31
-                0x00409858                __gnu_Unwind_Save_VFP_D_16_to_31
-                0x00409860                __gnu_Unwind_Restore_WMMXD
-                0x004098a4                __gnu_Unwind_Save_WMMXD
-                0x004098e8                __gnu_Unwind_Restore_WMMXC
-                0x004098fc                __gnu_Unwind_Save_WMMXC
-                0x00409910                ___Unwind_RaiseException
-                0x00409910                _Unwind_RaiseException
-                0x00409934                _Unwind_Resume
-                0x00409934                ___Unwind_Resume
-                0x00409958                _Unwind_Resume_or_Rethrow
-                0x00409958                ___Unwind_Resume_or_Rethrow
-                0x0040997c                _Unwind_ForcedUnwind
-                0x0040997c                ___Unwind_ForcedUnwind
-                0x004099a0                ___Unwind_Backtrace
-                0x004099a0                _Unwind_Backtrace
- .text          0x004099c4      0x3a0 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/thumb\libgcc.a(pr-support.o)
-                0x00409a10                __gnu_unwind_execute
-                0x00409d0c                __gnu_unwind_frame
-                0x00409d34                _Unwind_GetRegionStart
-                0x00409d40                _Unwind_GetLanguageSpecificData
-                0x00409d54                _Unwind_GetDataRelBase
-                0x00409d5c                _Unwind_GetTextRelBase
+                0x00405670       0x98 src/stdio_usb_example.o
+                0x00405670                main
+ .text          0x00405708        0xc c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-atexit.o)
+                0x00405708                atexit
+ .text          0x00405714       0x30 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-fini.o)
+                0x00405714                __libc_fini_array
+ .text          0x00405744       0x4c c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-init.o)
+                0x00405744                __libc_init_array
+ .text          0x00405790       0x12 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-memcpy.o)
+                0x00405790                memcpy
+ .text          0x004057a2       0x10 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-memset.o)
+                0x004057a2                memset
+ *fill*         0x004057b2        0x2 00
+ .text          0x004057b4       0x3c c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-printf.o)
+                0x004057b4                _printf_r
+                0x004057ce                printf
+ .text          0x004057f0       0x74 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-puts.o)
+                0x004057f0                _puts_r
+                0x00405854                puts
+ .text          0x00405864       0x10 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-setbuf.o)
+                0x00405864                setbuf
+ .text          0x00405874       0xec c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-setvbuf.o)
+                0x00405874                setvbuf
+ .text          0x00405960       0x10 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-strlen.o)
+                0x00405960                strlen
+ .text          0x00405970      0x9c4 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-vfiprintf.o)
+                0x00405970                __sprint_r
+                0x004059dc                _vfiprintf_r
+                0x00406318                vfiprintf
+ .text          0x00406334      0x958 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-vfprintf.o)
+                0x00406334                _vfprintf_r
+                0x00406c70                vfprintf
+ .text          0x00406c8c       0xb4 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-wbuf.o)
+                0x00406c8c                __swbuf_r
+                0x00406d2e                __swbuf
+ .text          0x00406d40       0xb8 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-wsetup.o)
+                0x00406d40                __swsetup_r
+ .text          0x00406df8       0x9c c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-__atexit.o)
+                0x00406df8                __register_exitproc
+ .text.startup  0x00406e94       0x14 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-__call_atexit.o)
+ .text          0x00406ea8        0xe c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-abort.o)
+                0x00406ea8                abort
+ *fill*         0x00406eb6        0x2 00
+ .text          0x00406eb8      0x154 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-fflush.o)
+                0x00406eb8                _fflush_r
+                0x00406fe8                fflush
+ .text          0x0040700c      0x18c c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-findfp.o)
+                0x00407014                _cleanup_r
+                0x00407068                __sfmoreglue
+                0x00407092                _cleanup
+                0x004070a0                __sinit
+                0x004070ec                __sfp
+                0x00407168                __sfp_lock_acquire
+                0x0040716a                __sfp_lock_release
+                0x0040716c                __sinit_lock_acquire
+                0x0040716e                __sinit_lock_release
+                0x00407170                __fp_lock_all
+                0x00407184                __fp_unlock_all
+ .text          0x00407198       0xe4 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-fputwc.o)
+                0x00407198                _fputwc_r
+                0x00407254                fputwc
+ .text          0x0040727c      0x204 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-freer.o)
+                0x0040727c                _malloc_trim_r
+                0x00407318                _free_r
+ .text          0x00407480      0x2b0 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-fvwrite.o)
+                0x00407480                __sfvwrite_r
+ .text          0x00407730       0x8a c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-fwalk.o)
+                0x00407730                _fwalk
+                0x00407774                _fwalk_reent
+ *fill*         0x004077ba        0x2 00
+ .text          0x004077bc       0x88 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-locale.o)
+                0x004077bc                _setlocale_r
+                0x00407800                __locale_charset
+                0x00407808                __locale_mb_cur_max
+                0x00407814                __locale_msgcharset
+                0x0040781c                __locale_cjk_lang
+                0x00407820                _localeconv_r
+                0x00407828                setlocale
+                0x0040783c                localeconv
+ .text          0x00407844       0xd8 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-makebuf.o)
+                0x00407844                __smakebuf_r
+ .text          0x0040791c       0x20 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-malloc.o)
+                0x0040791c                malloc
+                0x0040792c                free
+ .text          0x0040793c      0x3f8 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-mallocr.o)
+                0x0040793c                _malloc_r
+ .text          0x00407d34       0x1c c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-memchr.o)
+                0x00407d34                memchr
+ .text          0x00407d50       0x32 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-memmove.o)
+                0x00407d50                memmove
+ .text          0x00407d82        0x4 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-mlock.o)
+                0x00407d82                __malloc_lock
+                0x00407d84                __malloc_unlock
+ *fill*         0x00407d86        0x2 00
+ .text          0x00407d88      0x2dc c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-reallocr.o)
+                0x00407d88                _realloc_r
+ .text          0x00408064       0x20 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-sbrkr.o)
+                0x00408064                _sbrk_r
+ .text          0x00408084      0x144 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-signal.o)
+                0x00408084                _init_signal_r
+                0x004080b6                _signal_r
+                0x004080ea                _raise_r
+                0x0040813c                __sigtramp_r
+                0x0040818a                raise
+                0x00408198                signal
+                0x004081ac                _init_signal
+                0x004081b8                __sigtramp
+ .text          0x004081c8       0x28 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-signalr.o)
+                0x004081c8                _kill_r
+                0x004081ec                _getpid_r
+ .text          0x004081f0       0x8e c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-stdio.o)
+                0x004081f0                __sread
+                0x00408212                __seofread
+                0x00408216                __swrite
+                0x00408252                __sseek
+                0x00408276                __sclose
+ .text          0x0040827e       0x16 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-strcmp.o)
+                0x0040827e                strcmp
+ .text          0x00408294       0x68 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-wcrtomb.o)
+                0x00408294                _wcrtomb_r
+                0x004082e0                wcrtomb
+ .text          0x004082fc       0x44 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-wctomb_r.o)
+                0x004082fc                __ascii_wctomb
+                0x00408316                _wctomb_r
+ .text          0x00408340       0x24 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-writer.o)
+                0x00408340                _write_r
+ .text          0x00408364       0x20 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-closer.o)
+                0x00408364                _close_r
+ .text          0x00408384       0x94 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-fclose.o)
+                0x00408384                _fclose_r
+                0x0040840a                fclose
+ .text          0x00408418       0x24 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-fstatr.o)
+                0x00408418                _fstat_r
+ .text          0x0040843c       0x20 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-isattyr.o)
+                0x0040843c                _isatty_r
+ .text          0x0040845c       0x24 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-lseekr.o)
+                0x0040845c                _lseek_r
+ .text          0x00408480       0x24 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-readr.o)
+                0x00408480                _read_r
+ .text          0x004084a4       0x2c c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/thumb\libgcc.a(_aeabi_uldivmod.o)
+                0x004084a4                __aeabi_uldivmod
+ .text          0x004084d0       0x60 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/thumb\libgcc.a(bpabi.o)
+                0x004084d0                __gnu_ldivmod_helper
+                0x00408500                __gnu_uldivmod_helper
+ .text          0x00408530        0x4 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/thumb\libgcc.a(_dvmd_tls.o)
+                0x00408530                __aeabi_idiv0
+                0x00408530                __aeabi_ldiv0
+ .text          0x00408534      0x2c8 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/thumb\libgcc.a(_divdi3.o)
+                0x00408534                __divdi3
+ .text          0x004087fc      0x29c c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/thumb\libgcc.a(_udivdi3.o)
+                0x004087fc                __udivdi3
+ .text          0x00408a98      0x9fc c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/thumb\libgcc.a(unwind-arm.o)
+                0x00408d60                _Unwind_GetCFA
+                0x00408d64                __gnu_Unwind_RaiseException
+                0x00408dc4                __gnu_Unwind_ForcedUnwind
+                0x00408ddc                __gnu_Unwind_Resume
+                0x00408e20                __gnu_Unwind_Resume_or_Rethrow
+                0x00408e38                _Unwind_Complete
+                0x00408e3c                _Unwind_DeleteException
+                0x00408e4c                _Unwind_VRS_Get
+                0x00408e90                _Unwind_VRS_Set
+                0x004091a4                __aeabi_unwind_cpp_pr2
+                0x004091ac                __aeabi_unwind_cpp_pr1
+                0x004091b4                __aeabi_unwind_cpp_pr0
+                0x004091bc                __gnu_Unwind_Backtrace
+                0x0040922c                _Unwind_VRS_Pop
+ .text          0x00409494      0x1ac c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/thumb\libgcc.a(libunwind.o)
+                0x00409494                __restore_core_regs
+                0x00409494                restore_core_regs
+                0x004094ac                __gnu_Unwind_Restore_VFP
+                0x004094b4                __gnu_Unwind_Save_VFP
+                0x004094bc                __gnu_Unwind_Restore_VFP_D
+                0x004094c4                __gnu_Unwind_Save_VFP_D
+                0x004094cc                __gnu_Unwind_Restore_VFP_D_16_to_31
+                0x004094d4                __gnu_Unwind_Save_VFP_D_16_to_31
+                0x004094dc                __gnu_Unwind_Restore_WMMXD
+                0x00409520                __gnu_Unwind_Save_WMMXD
+                0x00409564                __gnu_Unwind_Restore_WMMXC
+                0x00409578                __gnu_Unwind_Save_WMMXC
+                0x0040958c                ___Unwind_RaiseException
+                0x0040958c                _Unwind_RaiseException
+                0x004095b0                _Unwind_Resume
+                0x004095b0                ___Unwind_Resume
+                0x004095d4                _Unwind_Resume_or_Rethrow
+                0x004095d4                ___Unwind_Resume_or_Rethrow
+                0x004095f8                _Unwind_ForcedUnwind
+                0x004095f8                ___Unwind_ForcedUnwind
+                0x0040961c                ___Unwind_Backtrace
+                0x0040961c                _Unwind_Backtrace
+ .text          0x00409640      0x3a0 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/thumb\libgcc.a(pr-support.o)
+                0x0040968c                __gnu_unwind_execute
+                0x00409988                __gnu_unwind_frame
+                0x004099b0                _Unwind_GetRegionStart
+                0x004099bc                _Unwind_GetLanguageSpecificData
+                0x004099d0                _Unwind_GetDataRelBase
+                0x004099d8                _Unwind_GetTextRelBase
  *(.glue_7t)
  .glue_7t       0x00000000        0x0 linker stubs
  *(.glue_7)
  .glue_7        0x00000000        0x0 linker stubs
  *(.rodata .rodata* .gnu.linkonce.r.*)
  .rodata.str1.1
-                0x00409d64      0x177 src/zepplin_fc.o
- *fill*         0x00409edb        0x1 00
+                0x004099e0      0x194 src/zeppelin_fc.o
  .rodata.sd_trans_multipliers
-                0x00409edc       0x40 src/asf/common/components/memory/sd_mmc/sd_mmc.o
-                0x00409edc                sd_trans_multipliers
+                0x00409b74       0x40 src/asf/common/components/memory/sd_mmc/sd_mmc.o
+                0x00409b74                sd_trans_multipliers
  .rodata.__func__.8996
-                0x00409f1c        0xf src/asf/common/components/memory/sd_mmc/sd_mmc.o
- *fill*         0x00409f2b        0x1 00
+                0x00409bb4        0xf src/asf/common/components/memory/sd_mmc/sd_mmc.o
+ *fill*         0x00409bc3        0x1 00
  .rodata.sd_mmc_trans_units
-                0x00409f2c       0x1c src/asf/common/components/memory/sd_mmc/sd_mmc.o
-                0x00409f2c                sd_mmc_trans_units
+                0x00409bc4       0x1c src/asf/common/components/memory/sd_mmc/sd_mmc.o
+                0x00409bc4                sd_mmc_trans_units
  .rodata.mmc_trans_multipliers
-                0x00409f48       0x40 src/asf/common/components/memory/sd_mmc/sd_mmc.o
-                0x00409f48                mmc_trans_multipliers
+                0x00409be0       0x40 src/asf/common/components/memory/sd_mmc/sd_mmc.o
+                0x00409be0                mmc_trans_multipliers
  .rodata.__func__.9159
-                0x00409f88       0x18 src/asf/common/components/memory/sd_mmc/sd_mmc.o
+                0x00409c20       0x18 src/asf/common/components/memory/sd_mmc/sd_mmc.o
  .rodata.str1.1
-                0x00409fa0      0x219 src/asf/common/components/memory/sd_mmc/sd_mmc.o
+                0x00409c38      0x219 src/asf/common/components/memory/sd_mmc/sd_mmc.o
  .rodata.__func__.9176
-                0x0040a1b9       0x19 src/asf/common/components/memory/sd_mmc/sd_mmc.o
- *fill*         0x0040a1d2        0x2 00
+                0x00409e51       0x19 src/asf/common/components/memory/sd_mmc/sd_mmc.o
+ *fill*         0x00409e6a        0x2 00
  .rodata.CSWTCH.69
-                0x0040a1d4       0x14 src/asf/common/components/memory/sd_mmc/sd_mmc.o
+                0x00409e6c       0x14 src/asf/common/components/memory/sd_mmc/sd_mmc.o
  .rodata.__func__.9015
-                0x0040a1e8       0x16 src/asf/common/components/memory/sd_mmc/sd_mmc.o
+                0x00409e80       0x16 src/asf/common/components/memory/sd_mmc/sd_mmc.o
  .rodata.__func__.9028
-                0x0040a1fe       0x18 src/asf/common/components/memory/sd_mmc/sd_mmc.o
+                0x00409e96       0x18 src/asf/common/components/memory/sd_mmc/sd_mmc.o
  .rodata.__func__.9081
-                0x0040a216        0xd src/asf/common/components/memory/sd_mmc/sd_mmc.o
+                0x00409eae        0xd src/asf/common/components/memory/sd_mmc/sd_mmc.o
  .rodata.__func__.9024
-                0x0040a223       0x17 src/asf/common/components/memory/sd_mmc/sd_mmc.o
+                0x00409ebb       0x17 src/asf/common/components/memory/sd_mmc/sd_mmc.o
  .rodata.__func__.9033
-                0x0040a23a        0x8 src/asf/common/components/memory/sd_mmc/sd_mmc.o
+                0x00409ed2        0x8 src/asf/common/components/memory/sd_mmc/sd_mmc.o
  .rodata.__func__.8978
-                0x0040a242       0x10 src/asf/common/components/memory/sd_mmc/sd_mmc.o
+                0x00409eda       0x10 src/asf/common/components/memory/sd_mmc/sd_mmc.o
  .rodata.CSWTCH.39
-                0x0040a252        0x5 src/asf/sam/drivers/hsmci/hsmci.o
+                0x00409eea        0x5 src/asf/sam/drivers/hsmci/hsmci.o
  .rodata.str1.1
-                0x0040a257       0x19 src/asf/sam/utils/syscalls/gcc/syscalls.o
+                0x00409eef       0x19 src/asf/sam/utils/syscalls/gcc/syscalls.o
  .rodata.CSWTCH.6
-                0x0040a270        0x3 src/asf/thirdparty/fatfs/fatfs-port-r0.09/diskio.o
+                0x00409f08        0x3 src/asf/thirdparty/fatfs/fatfs-port-r0.09/diskio.o
  .rodata.excvt.4497
-                0x0040a273       0x80 src/asf/thirdparty/fatfs/fatfs-r0.09/src/ff.o
+                0x00409f0b       0x80 src/asf/thirdparty/fatfs/fatfs-r0.09/src/ff.o
  .rodata.str1.1
-                0x0040a2f3       0x10 src/asf/thirdparty/fatfs/fatfs-r0.09/src/ff.o
+                0x00409f8b       0x10 src/asf/thirdparty/fatfs/fatfs-r0.09/src/ff.o
  .rodata.LfnOfs
-                0x0040a303        0xd src/asf/thirdparty/fatfs/fatfs-r0.09/src/ff.o
+                0x00409f9b        0xd src/asf/thirdparty/fatfs/fatfs-r0.09/src/ff.o
  .rodata.tbl_lower.4247
-                0x0040a310      0x1e0 src/asf/thirdparty/fatfs/fatfs-r0.09/src/option/ccsbcs.o
- .rodata.Tbl    0x0040a4f0      0x100 src/asf/thirdparty/fatfs/fatfs-r0.09/src/option/ccsbcs.o
+                0x00409fa8      0x1e0 src/asf/thirdparty/fatfs/fatfs-r0.09/src/option/ccsbcs.o
+ .rodata.Tbl    0x0040a188      0x100 src/asf/thirdparty/fatfs/fatfs-r0.09/src/option/ccsbcs.o
  .rodata.tbl_upper.4248
-                0x0040a5f0      0x1e0 src/asf/thirdparty/fatfs/fatfs-r0.09/src/option/ccsbcs.o
- .rodata        0x0040a7d0        0x4 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-impure.o)
-                0x0040a7d0                _global_impure_ptr
+                0x0040a288      0x1e0 src/asf/thirdparty/fatfs/fatfs-r0.09/src/option/ccsbcs.o
+ .rodata        0x0040a468        0x4 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-impure.o)
+                0x0040a468                _global_impure_ptr
  .rodata.str1.1
-                0x0040a7d4        0x2 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-impure.o)
+                0x0040a46c        0x2 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-impure.o)
  .rodata.str1.1
                 0x00000000        0x2 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-puts.o)
- .rodata        0x0040a7d6       0x20 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-vfiprintf.o)
+ .rodata        0x0040a46e       0x20 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-vfiprintf.o)
  .rodata.str1.1
-                0x0040a7f6       0x22 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-vfiprintf.o)
- .rodata        0x0040a818       0x20 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-vfprintf.o)
+                0x0040a48e       0x22 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-vfiprintf.o)
+ .rodata        0x0040a4b0       0x20 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-vfprintf.o)
  .rodata.str1.1
                 0x00000000       0x22 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-vfprintf.o)
  .rodata.str1.1
-                0x0040a838        0x6 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-locale.o)
+                0x0040a4d0        0x6 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-locale.o)
                                   0xb (size before relaxing)
  *(.ARM.extab* .gnu.linkonce.armextab.*)
- *fill*         0x0040a83e        0x2 00
- .ARM.extab     0x0040a840       0x18 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/thumb\libgcc.a(unwind-arm.o)
- .ARM.extab     0x0040a858       0x18 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/thumb\libgcc.a(pr-support.o)
-                0x0040a870                . = ALIGN (0x4)
+ *fill*         0x0040a4d6        0x2 00
+ .ARM.extab     0x0040a4d8       0x18 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/thumb\libgcc.a(unwind-arm.o)
+ .ARM.extab     0x0040a4f0       0x18 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/thumb\libgcc.a(pr-support.o)
+                0x0040a508                . = ALIGN (0x4)
  *(.init)
- .init          0x0040a870        0x4 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/thumb/crti.o
-                0x0040a870                _init
- .init          0x0040a874        0x8 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/thumb/crtn.o
-                0x0040a87c                . = ALIGN (0x4)
-                0x0040a87c                __preinit_array_start = .
+ .init          0x0040a508        0x4 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/thumb/crti.o
+                0x0040a508                _init
+ .init          0x0040a50c        0x8 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/thumb/crtn.o
+                0x0040a514                . = ALIGN (0x4)
+                0x0040a514                __preinit_array_start = .
  *(.preinit_array)
-                0x0040a87c                __preinit_array_end = .
-                0x0040a87c                . = ALIGN (0x4)
-                0x0040a87c                __init_array_start = .
+                0x0040a514                __preinit_array_end = .
+                0x0040a514                . = ALIGN (0x4)
+                0x0040a514                __init_array_start = .
  *(SORT(.init_array.*))
  .init_array.00000
-                0x0040a87c        0x4 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-__call_atexit.o)
+                0x0040a514        0x4 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-__call_atexit.o)
  *(.init_array)
- .init_array    0x0040a880        0x4 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/thumb/crtbegin.o
-                0x0040a884                __init_array_end = .
-                0x0040a884                . = ALIGN (0x4)
+ .init_array    0x0040a518        0x4 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/thumb/crtbegin.o
+                0x0040a51c                __init_array_end = .
+                0x0040a51c                . = ALIGN (0x4)
  *crtbegin.o(.ctors)
  *(EXCLUDE_FILE(*crtend.o) .ctors)
  *(SORT(.ctors.*))
  *crtend.o(.ctors)
-                0x0040a884                . = ALIGN (0x4)
+                0x0040a51c                . = ALIGN (0x4)
  *(.fini)
- .fini          0x0040a884        0x4 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/thumb/crti.o
-                0x0040a884                _fini
- .fini          0x0040a888        0x8 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/thumb/crtn.o
-                0x0040a890                . = ALIGN (0x4)
-                0x0040a890                __fini_array_start = .
+ .fini          0x0040a51c        0x4 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/thumb/crti.o
+                0x0040a51c                _fini
+ .fini          0x0040a520        0x8 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/thumb/crtn.o
+                0x0040a528                . = ALIGN (0x4)
+                0x0040a528                __fini_array_start = .
  *(.fini_array)
- .fini_array    0x0040a890        0x4 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/thumb/crtbegin.o
+ .fini_array    0x0040a528        0x4 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/thumb/crtbegin.o
  *(SORT(.fini_array.*))
-                0x0040a894                __fini_array_end = .
+                0x0040a52c                __fini_array_end = .
  *crtbegin.o(.dtors)
  *(EXCLUDE_FILE(*crtend.o) .dtors)
  *(SORT(.dtors.*))
  *crtend.o(.dtors)
-                0x0040a894                . = ALIGN (0x4)
-                0x0040a894                _efixed = .
-                0x0040a894                PROVIDE (__exidx_start, .)
+                0x0040a52c                . = ALIGN (0x4)
+                0x0040a52c                _efixed = .
+                0x0040a52c                PROVIDE (__exidx_start, .)
 
-.vfp11_veneer   0x0040a894        0x0
+.vfp11_veneer   0x0040a52c        0x0
  .vfp11_veneer  0x00000000        0x0 linker stubs
 
-.v4_bx          0x0040a894        0x0
+.v4_bx          0x0040a52c        0x0
  .v4_bx         0x00000000        0x0 linker stubs
 
-.iplt           0x0040a894        0x0
+.iplt           0x0040a52c        0x0
  .iplt          0x00000000        0x0 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/thumb/crtbegin.o
 
-.ARM.exidx      0x0040a894       0xd8
+.ARM.exidx      0x0040a52c       0xd8
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
- .ARM.exidx     0x0040a894        0x8 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/thumb\libgcc.a(_divdi3.o)
- .ARM.exidx     0x0040a89c        0x8 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/thumb\libgcc.a(_udivdi3.o)
- .ARM.exidx     0x0040a8a4       0x90 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/thumb\libgcc.a(unwind-arm.o)
+ .ARM.exidx     0x0040a52c        0x8 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/thumb\libgcc.a(_divdi3.o)
+ .ARM.exidx     0x0040a534        0x8 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/thumb\libgcc.a(_udivdi3.o)
+ .ARM.exidx     0x0040a53c       0x90 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/thumb\libgcc.a(unwind-arm.o)
                                  0xd8 (size before relaxing)
- .ARM.exidx     0x0040a934       0x38 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/thumb\libgcc.a(pr-support.o)
+ .ARM.exidx     0x0040a5cc       0x38 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/thumb\libgcc.a(pr-support.o)
                                  0x48 (size before relaxing)
-                0x0040a96c                PROVIDE (__exidx_end, .)
+                0x0040a604                PROVIDE (__exidx_end, .)
 
-.eh_frame       0x0040a96c        0x0
- .eh_frame      0x0040a96c        0x0 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/thumb/crtbegin.o
+.eh_frame       0x0040a604        0x0
+ .eh_frame      0x0040a604        0x0 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/thumb/crtbegin.o
 
-.rel.dyn        0x0040a96c        0x0
+.rel.dyn        0x0040a604        0x0
  .rel.iplt      0x00000000        0x0 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/thumb/crtbegin.o
 
-.jcr            0x0040a96c        0x0
- .jcr           0x0040a96c        0x0 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/thumb/crtbegin.o
+.jcr            0x0040a604        0x0
+ .jcr           0x0040a604        0x0 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/thumb/crtbegin.o
 
 .tm_clone_table
-                0x0040a96c        0x0
+                0x0040a604        0x0
  .tm_clone_table
-                0x0040a96c        0x0 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/thumb/crtbegin.o
+                0x0040a604        0x0 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/thumb/crtbegin.o
  .tm_clone_table
-                0x0040a96c        0x0 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/thumb/crtend.o
+                0x0040a604        0x0 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/thumb/crtend.o
 
-.igot.plt       0x0040a96c        0x0
+.igot.plt       0x0040a604        0x0
  .igot.plt      0x00000000        0x0 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/thumb/crtbegin.o
-                0x0040a96c                . = ALIGN (0x4)
-                0x0040a96c                _etext = .
+                0x0040a604                . = ALIGN (0x4)
+                0x0040a604                _etext = .
 
-.relocate       0x20000000      0x9d0 load address 0x0040a96c
+.relocate       0x20000000      0x9d0 load address 0x0040a604
                 0x20000000                . = ALIGN (0x4)
                 0x20000000                _srelocate = .
  *(.ramfunc .ramfunc.*)
@@ -2602,11 +2594,11 @@ LOAD c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1
                 0x2000000c        0x4 src/asf/sam/utils/cmsis/sam3s8/source/templates/system_sam3sd8.o
                 0x2000000c                SystemCoreClock
  .data.file_name
-                0x20000010       0x11 src/zepplin_fc.o
+                0x20000010       0x11 src/zeppelin_fc.o
                 0x20000010                file_name
- .data.b_read   0x20000021        0x1 src/zepplin_fc.o
+ .data.b_read   0x20000021        0x1 src/zeppelin_fc.o
  *fill*         0x20000022        0x2 00
- .data.bTemp    0x20000024        0x4 src/zepplin_fc.o
+ .data.bTemp    0x20000024        0x4 src/zeppelin_fc.o
                 0x20000024                bTemp
  .data.sd_mmc_cards
                 0x20000028       0x24 src/asf/common/components/memory/sd_mmc/sd_mmc.o
@@ -2657,15 +2649,15 @@ LOAD c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1
                 0x200009d0                . = ALIGN (0x4)
                 0x200009d0                _erelocate = .
 
-.bss            0x200009d0      0xd78 load address 0x0040b33c
+.bss            0x200009d0      0xfa4 load address 0x0040afd4
                 0x200009d0                . = ALIGN (0x4)
                 0x200009d0                _sbss = .
                 0x200009d0                _szero = .
  *(.bss .bss.*)
  .bss           0x200009d0       0x1c c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/thumb/crtbegin.o
- .bss.b_ms      0x200009ec        0x4 src/zepplin_fc.o
+ .bss.b_ms      0x200009ec        0x4 src/zeppelin_fc.o
  .bss.ul_ms_ticks
-                0x200009f0        0x4 src/zepplin_fc.o
+                0x200009f0        0x4 src/zeppelin_fc.o
                 0x200009f0                ul_ms_ticks
  .bss.sd_mmc_nb_block_to_tranfer
                 0x200009f4        0x2 src/asf/common/components/memory/sd_mmc/sd_mmc.o
@@ -2761,52 +2753,51 @@ LOAD c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1
  .bss.Fsid      0x20001008        0x2 src/asf/thirdparty/fatfs/fatfs-r0.09/src/ff.o
  *fill*         0x2000100a        0x2 00
  .bss.FatFs     0x2000100c        0x4 src/asf/thirdparty/fatfs/fatfs-r0.09/src/ff.o
- .bss.ZP_Tick   0x20001010        0x4 src/stdio_usb_example.o
- .bss           0x20001014       0x34 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-mallocr.o)
-                0x20001014                __malloc_top_pad
-                0x20001018                __malloc_current_mallinfo
-                0x20001040                __malloc_max_sbrked_mem
-                0x20001044                __malloc_max_total_mem
+ .bss           0x20001010       0x34 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-mallocr.o)
+                0x20001010                __malloc_top_pad
+                0x20001014                __malloc_current_mallinfo
+                0x2000103c                __malloc_max_sbrked_mem
+                0x20001040                __malloc_max_total_mem
  *(COMMON)
- COMMON         0x20001048        0xf src/MPU9150.o
-                0x20001048                MPU9150_buffer
-                0x20001056                MPU9150_devAddr
- *fill*         0x20001057        0x1 00
- COMMON         0x20001058      0x6c2 src/zepplin_fc.o
-                0x20001058                log
-                0x2000127c                fno
-                0x2000129c                fs
-                0x200014cc                file_object
-                0x200016f0                bw
-                0x200016f4                dir
-                0x20001718                res
-                0x20001719                status
- COMMON         0x2000171a        0x5 src/asf/common/services/sleepmgr/sam/sleepmgr.o
-                0x2000171a                sleepmgr_locks
- *fill*         0x2000171f        0x1 00
- COMMON         0x20001720        0x4 src/asf/common/utils/stdio/read.o
-                0x20001720                ptr_get
- COMMON         0x20001724        0x8 src/asf/common/utils/stdio/write.o
-                0x20001724                ptr_put
-                0x20001728                stdio_base
- COMMON         0x2000172c       0x18 src/asf/sam/drivers/udp/udp_device.o
-                0x2000172c                udd_g_ctrlreq
- COMMON         0x20001744        0x4 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-reent.o)
-                0x20001744                errno
-                0x20001748                . = ALIGN (0x4)
-                0x20001748                _ebss = .
-                0x20001748                _ezero = .
+ COMMON         0x20001044      0x902 src/zeppelin_fc.o
+                0x20001044                log
+                0x20001268                Script
+                0x20001468                fno
+                0x20001488                fs
+                0x200016b8                file_object
+                0x200018dc                f_script
+                0x200018fc                f_log
+                0x2000191c                bw
+                0x20001920                dir
+                0x20001944                res
+                0x20001945                status
+ COMMON         0x20001946        0x5 src/asf/common/services/sleepmgr/sam/sleepmgr.o
+                0x20001946                sleepmgr_locks
+ *fill*         0x2000194b        0x1 00
+ COMMON         0x2000194c        0x4 src/asf/common/utils/stdio/read.o
+                0x2000194c                ptr_get
+ COMMON         0x20001950        0x8 src/asf/common/utils/stdio/write.o
+                0x20001950                ptr_put
+                0x20001954                stdio_base
+ COMMON         0x20001958       0x18 src/asf/sam/drivers/udp/udp_device.o
+                0x20001958                udd_g_ctrlreq
+ COMMON         0x20001970        0x4 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-reent.o)
+                0x20001970                errno
+                0x20001974                . = ALIGN (0x4)
+                0x20001974                _ebss = .
+                0x20001974                _ezero = .
 
-.stack          0x20001748     0x2000 load address 0x0040c0b4
-                0x20001748                . = ALIGN (0x8)
-                0x20001748                _sstack = .
-                0x20003748                . = (. + __stack_size__)
- *fill*         0x20001748     0x2000 00
-                0x20003748                . = ALIGN (0x8)
-                0x20003748                _estack = .
-                0x20003748                . = ALIGN (0x4)
-                0x20003748                _end = .
-OUTPUT(Zepplin-FC.elf elf32-littlearm)
+.stack          0x20001974     0x2004 load address 0x0040bf78
+                0x20001978                . = ALIGN (0x8)
+ *fill*         0x20001974        0x4 00
+                0x20001978                _sstack = .
+                0x20003978                . = (. + __stack_size__)
+ *fill*         0x20001978     0x2000 00
+                0x20003978                . = ALIGN (0x8)
+                0x20003978                _estack = .
+                0x20003978                . = ALIGN (0x4)
+                0x20003978                _end = .
+OUTPUT(Zeppelin-FC.elf elf32-littlearm)
 
 .ARM.attributes
                 0x00000000       0x29
@@ -2815,188 +2806,179 @@ OUTPUT(Zepplin-FC.elf elf32-littlearm)
  .ARM.attributes
                 0x0000001d       0x2d c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/thumb/crtbegin.o
  .ARM.attributes
-                0x0000004a       0x33 src/asf/sam/drivers/twi/twi.o
+                0x0000004a       0x33 src/asf/sam/utils/cmsis/sam3s8/source/templates/exceptions.o
  .ARM.attributes
-                0x0000007d       0x33 src/asf/sam/utils/cmsis/sam3s8/source/templates/exceptions.o
+                0x0000007d       0x33 src/asf/sam/utils/cmsis/sam3s8/source/templates/gcc/startup_sam3sd8.o
  .ARM.attributes
-                0x000000b0       0x33 src/asf/sam/utils/cmsis/sam3s8/source/templates/gcc/startup_sam3sd8.o
+                0x000000b0       0x33 src/asf/sam/utils/cmsis/sam3s8/source/templates/system_sam3sd8.o
  .ARM.attributes
-                0x000000e3       0x33 src/asf/sam/utils/cmsis/sam3s8/source/templates/system_sam3sd8.o
+                0x000000e3       0x33 src/zeppelin_fc.o
  .ARM.attributes
-                0x00000116       0x33 src/I2CdevWrapper.o
+                0x00000116       0x33 src/asf/common/components/memory/sd_mmc/sd_mmc.o
  .ARM.attributes
-                0x00000149       0x33 src/MPU9150.o
+                0x00000149       0x33 src/asf/common/services/clock/sam3s/sysclk.o
  .ARM.attributes
-                0x0000017c       0x33 src/zepplin_fc.o
+                0x0000017c       0x33 src/asf/common/services/delay/sam/cycle_counter.o
  .ARM.attributes
-                0x000001af       0x33 src/asf/common/components/memory/sd_mmc/sd_mmc.o
+                0x000001af       0x33 src/asf/common/services/sleepmgr/sam/sleepmgr.o
  .ARM.attributes
-                0x000001e2       0x33 src/asf/common/services/clock/sam3s/sysclk.o
+                0x000001e2       0x33 src/asf/common/services/storage/ctrl_access/ctrl_access.o
  .ARM.attributes
-                0x00000215       0x33 src/asf/common/services/delay/sam/cycle_counter.o
+                0x00000215       0x33 src/asf/common/services/usb/class/cdc/device/udi_cdc.o
  .ARM.attributes
-                0x00000248       0x33 src/asf/common/services/sleepmgr/sam/sleepmgr.o
+                0x00000248       0x33 src/asf/common/services/usb/class/cdc/device/udi_cdc_desc.o
  .ARM.attributes
-                0x0000027b       0x33 src/asf/common/services/storage/ctrl_access/ctrl_access.o
+                0x0000027b       0x33 src/asf/common/services/usb/udc/udc.o
  .ARM.attributes
-                0x000002ae       0x33 src/asf/common/services/usb/class/cdc/device/udi_cdc.o
+                0x000002ae       0x33 src/asf/common/utils/interrupt/interrupt_sam_nvic.o
  .ARM.attributes
-                0x000002e1       0x33 src/asf/common/services/usb/class/cdc/device/udi_cdc_desc.o
+                0x000002e1       0x33 src/asf/common/utils/stdio/read.o
  .ARM.attributes
-                0x00000314       0x33 src/asf/common/services/usb/udc/udc.o
+                0x00000314       0x33 src/asf/common/utils/stdio/stdio_usb/stdio_usb.o
  .ARM.attributes
-                0x00000347       0x33 src/asf/common/utils/interrupt/interrupt_sam_nvic.o
+                0x00000347       0x33 src/asf/common/utils/stdio/write.o
  .ARM.attributes
-                0x0000037a       0x33 src/asf/common/utils/stdio/read.o
+                0x0000037a       0x33 src/asf/sam/boards/sam3s_ek/init.o
  .ARM.attributes
-                0x000003ad       0x33 src/asf/common/utils/stdio/stdio_usb/stdio_usb.o
+                0x000003ad       0x33 src/asf/sam/drivers/efc/efc.o
  .ARM.attributes
-                0x000003e0       0x33 src/asf/common/utils/stdio/write.o
+                0x000003e0       0x33 src/asf/sam/drivers/hsmci/hsmci.o
  .ARM.attributes
-                0x00000413       0x33 src/asf/sam/boards/sam3s_ek/init.o
+                0x00000413       0x33 src/asf/sam/drivers/pio/pio.o
  .ARM.attributes
-                0x00000446       0x33 src/asf/sam/drivers/efc/efc.o
+                0x00000446       0x33 src/asf/sam/drivers/pio/pio_handler.o
  .ARM.attributes
-                0x00000479       0x33 src/asf/sam/drivers/hsmci/hsmci.o
+                0x00000479       0x33 src/asf/sam/drivers/pmc/pmc.o
  .ARM.attributes
-                0x000004ac       0x33 src/asf/sam/drivers/pio/pio.o
+                0x000004ac       0x33 src/asf/sam/drivers/rtc/rtc.o
  .ARM.attributes
-                0x000004df       0x33 src/asf/sam/drivers/pio/pio_handler.o
+                0x000004df       0x33 src/asf/sam/drivers/udp/udp_device.o
  .ARM.attributes
-                0x00000512       0x33 src/asf/sam/drivers/pmc/pmc.o
+                0x00000512       0x33 src/asf/sam/services/flash_efc/flash_efc.o
  .ARM.attributes
-                0x00000545       0x33 src/asf/sam/drivers/rtc/rtc.o
+                0x00000545       0x33 src/asf/sam/utils/syscalls/gcc/syscalls.o
  .ARM.attributes
-                0x00000578       0x33 src/asf/sam/drivers/udp/udp_device.o
+                0x00000578       0x33 src/asf/thirdparty/fatfs/fatfs-port-r0.09/diskio.o
  .ARM.attributes
-                0x000005ab       0x33 src/asf/sam/services/flash_efc/flash_efc.o
+                0x000005ab       0x33 src/asf/thirdparty/fatfs/fatfs-port-r0.09/sam/fattime.o
  .ARM.attributes
-                0x000005de       0x33 src/asf/sam/utils/syscalls/gcc/syscalls.o
+                0x000005de       0x33 src/asf/thirdparty/fatfs/fatfs-r0.09/src/ff.o
  .ARM.attributes
-                0x00000611       0x33 src/asf/thirdparty/fatfs/fatfs-port-r0.09/diskio.o
+                0x00000611       0x33 src/asf/thirdparty/fatfs/fatfs-r0.09/src/option/ccsbcs.o
  .ARM.attributes
-                0x00000644       0x33 src/asf/thirdparty/fatfs/fatfs-port-r0.09/sam/fattime.o
+                0x00000644       0x33 src/sd_mmc_mem.o
  .ARM.attributes
-                0x00000677       0x33 src/asf/thirdparty/fatfs/fatfs-r0.09/src/ff.o
+                0x00000677       0x33 src/stdio_usb_example.o
  .ARM.attributes
-                0x000006aa       0x33 src/asf/thirdparty/fatfs/fatfs-r0.09/src/option/ccsbcs.o
+                0x000006aa       0x2d c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-atexit.o)
  .ARM.attributes
-                0x000006dd       0x33 src/sd_mmc_mem.o
+                0x000006d7       0x2d c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-fini.o)
  .ARM.attributes
-                0x00000710       0x33 src/stdio_usb_example.o
+                0x00000704       0x2d c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-impure.o)
  .ARM.attributes
-                0x00000743       0x2d c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-atexit.o)
+                0x00000731       0x2d c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-init.o)
  .ARM.attributes
-                0x00000770       0x2d c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-fini.o)
+                0x0000075e       0x2d c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-memcpy.o)
  .ARM.attributes
-                0x0000079d       0x2d c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-impure.o)
+                0x0000078b       0x2d c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-memset.o)
  .ARM.attributes
-                0x000007ca       0x2d c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-init.o)
+                0x000007b8       0x2d c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-printf.o)
  .ARM.attributes
-                0x000007f7       0x2d c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-memcpy.o)
+                0x000007e5       0x2d c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-puts.o)
  .ARM.attributes
-                0x00000824       0x2d c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-memset.o)
+                0x00000812       0x2d c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-setbuf.o)
  .ARM.attributes
-                0x00000851       0x2d c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-printf.o)
+                0x0000083f       0x2d c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-setvbuf.o)
  .ARM.attributes
-                0x0000087e       0x2d c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-puts.o)
+                0x0000086c       0x2d c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-strlen.o)
  .ARM.attributes
-                0x000008ab       0x2d c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-setbuf.o)
+                0x00000899       0x2d c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-vfiprintf.o)
  .ARM.attributes
-                0x000008d8       0x2d c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-setvbuf.o)
+                0x000008c6       0x2d c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-vfprintf.o)
  .ARM.attributes
-                0x00000905       0x2d c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-strlen.o)
+                0x000008f3       0x2d c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-wbuf.o)
  .ARM.attributes
-                0x00000932       0x2d c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-vfiprintf.o)
+                0x00000920       0x2d c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-wsetup.o)
  .ARM.attributes
-                0x0000095f       0x2d c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-vfprintf.o)
+                0x0000094d       0x2d c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-__atexit.o)
  .ARM.attributes
-                0x0000098c       0x2d c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-wbuf.o)
+                0x0000097a       0x2d c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-__call_atexit.o)
  .ARM.attributes
-                0x000009b9       0x2d c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-wsetup.o)
+                0x000009a7       0x2d c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-fflush.o)
  .ARM.attributes
-                0x000009e6       0x2d c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-__atexit.o)
+                0x000009d4       0x2d c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-findfp.o)
  .ARM.attributes
-                0x00000a13       0x2d c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-__call_atexit.o)
+                0x00000a01       0x2d c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-fputwc.o)
  .ARM.attributes
-                0x00000a40       0x2d c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-fflush.o)
+                0x00000a2e       0x2d c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-freer.o)
  .ARM.attributes
-                0x00000a6d       0x2d c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-findfp.o)
+                0x00000a5b       0x2d c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-fvwrite.o)
  .ARM.attributes
-                0x00000a9a       0x2d c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-fputwc.o)
+                0x00000a88       0x2d c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-fwalk.o)
  .ARM.attributes
-                0x00000ac7       0x2d c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-freer.o)
+                0x00000ab5       0x2d c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-locale.o)
  .ARM.attributes
-                0x00000af4       0x2d c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-fvwrite.o)
+                0x00000ae2       0x2d c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-makebuf.o)
  .ARM.attributes
-                0x00000b21       0x2d c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-fwalk.o)
+                0x00000b0f       0x2d c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-malloc.o)
  .ARM.attributes
-                0x00000b4e       0x2d c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-locale.o)
+                0x00000b3c       0x2d c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-mallocr.o)
  .ARM.attributes
-                0x00000b7b       0x2d c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-makebuf.o)
+                0x00000b69       0x2d c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-memchr.o)
  .ARM.attributes
-                0x00000ba8       0x2d c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-malloc.o)
+                0x00000b96       0x2d c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-memmove.o)
  .ARM.attributes
-                0x00000bd5       0x2d c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-mallocr.o)
+                0x00000bc3       0x2d c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-mlock.o)
  .ARM.attributes
-                0x00000c02       0x2d c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-memchr.o)
+                0x00000bf0       0x2d c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-reallocr.o)
  .ARM.attributes
-                0x00000c2f       0x2d c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-memmove.o)
+                0x00000c1d       0x2d c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-sbrkr.o)
  .ARM.attributes
-                0x00000c5c       0x2d c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-mlock.o)
+                0x00000c4a       0x2d c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-stdio.o)
  .ARM.attributes
-                0x00000c89       0x2d c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-reallocr.o)
+                0x00000c77       0x2d c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-strcmp.o)
  .ARM.attributes
-                0x00000cb6       0x2d c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-sbrkr.o)
+                0x00000ca4       0x2d c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-wcrtomb.o)
  .ARM.attributes
-                0x00000ce3       0x2d c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-stdio.o)
+                0x00000cd1       0x2d c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-wctomb_r.o)
  .ARM.attributes
-                0x00000d10       0x2d c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-strcmp.o)
+                0x00000cfe       0x2d c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-writer.o)
  .ARM.attributes
-                0x00000d3d       0x2d c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-wcrtomb.o)
+                0x00000d2b       0x2d c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-closer.o)
  .ARM.attributes
-                0x00000d6a       0x2d c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-wctomb_r.o)
+                0x00000d58       0x2d c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-fclose.o)
  .ARM.attributes
-                0x00000d97       0x2d c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-writer.o)
+                0x00000d85       0x2d c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-fstatr.o)
  .ARM.attributes
-                0x00000dc4       0x2d c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-closer.o)
+                0x00000db2       0x2d c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-isattyr.o)
  .ARM.attributes
-                0x00000df1       0x2d c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-fclose.o)
+                0x00000ddf       0x2d c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-lseekr.o)
  .ARM.attributes
-                0x00000e1e       0x2d c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-fstatr.o)
+                0x00000e0c       0x2d c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-readr.o)
  .ARM.attributes
-                0x00000e4b       0x2d c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-isattyr.o)
+                0x00000e39       0x2d c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-reent.o)
  .ARM.attributes
-                0x00000e78       0x2d c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-lseekr.o)
+                0x00000e66       0x1d c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/thumb\libgcc.a(_aeabi_uldivmod.o)
  .ARM.attributes
-                0x00000ea5       0x2d c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-readr.o)
+                0x00000e83       0x2d c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/thumb\libgcc.a(bpabi.o)
  .ARM.attributes
-                0x00000ed2       0x2d c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-reent.o)
+                0x00000eb0       0x1d c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/thumb\libgcc.a(_dvmd_tls.o)
  .ARM.attributes
-                0x00000eff       0x1d c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/thumb\libgcc.a(_aeabi_uldivmod.o)
+                0x00000ecd       0x2d c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/thumb\libgcc.a(_divdi3.o)
  .ARM.attributes
-                0x00000f1c       0x2d c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/thumb\libgcc.a(bpabi.o)
+                0x00000efa       0x2d c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/thumb\libgcc.a(_udivdi3.o)
  .ARM.attributes
-                0x00000f49       0x1d c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/thumb\libgcc.a(_dvmd_tls.o)
+                0x00000f27       0x2d c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/thumb/crtend.o
  .ARM.attributes
-                0x00000f66       0x2d c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/thumb\libgcc.a(_divdi3.o)
- .ARM.attributes
-                0x00000f93       0x2d c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/thumb\libgcc.a(_udivdi3.o)
- .ARM.attributes
-                0x00000fc0       0x2d c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/thumb/crtend.o
- .ARM.attributes
-                0x00000fed       0x1d c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/thumb/crtn.o
+                0x00000f54       0x1d c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/thumb/crtn.o
 
 .comment        0x00000000       0x33
  .comment       0x00000000       0x33 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/thumb/crtbegin.o
                                  0x34 (size before relaxing)
- .comment       0x00000000       0x34 src/asf/sam/drivers/twi/twi.o
  .comment       0x00000000       0x34 src/asf/sam/utils/cmsis/sam3s8/source/templates/exceptions.o
  .comment       0x00000000       0x34 src/asf/sam/utils/cmsis/sam3s8/source/templates/gcc/startup_sam3sd8.o
  .comment       0x00000000       0x34 src/asf/sam/utils/cmsis/sam3s8/source/templates/system_sam3sd8.o
- .comment       0x00000000       0x34 src/I2CdevWrapper.o
- .comment       0x00000000       0x34 src/MPU9150.o
- .comment       0x00000000       0x34 src/zepplin_fc.o
+ .comment       0x00000000       0x34 src/zeppelin_fc.o
  .comment       0x00000000       0x34 src/asf/common/components/memory/sd_mmc/sd_mmc.o
  .comment       0x00000000       0x34 src/asf/common/services/clock/sam3s/sysclk.o
  .comment       0x00000000       0x34 src/asf/common/services/delay/sam/cycle_counter.o
@@ -3712,7 +3694,6 @@ MPU9150_getZeroMotionDetected                     src/MPU9150.o
 MPU9150_getZeroMotionDetectionDuration            src/MPU9150.o
 MPU9150_getZeroMotionDetectionThreshold           src/MPU9150.o
 MPU9150_initialize                                src/MPU9150.o
-                                                  src/stdio_usb_example.o
 MPU9150_readMemoryByte                            src/MPU9150.o
 MPU9150_reset                                     src/MPU9150.o
 MPU9150_resetAccelerometerPath                    src/MPU9150.o
@@ -3856,8 +3837,9 @@ SUPC_Handler                                      src/asf/sam/utils/cmsis/sam3s8
                                                   src/asf/sam/utils/cmsis/sam3s8/source/templates/gcc/startup_sam3sd8.o
 SVC_Handler                                       src/asf/sam/utils/cmsis/sam3s8/source/templates/exceptions.o
                                                   src/asf/sam/utils/cmsis/sam3s8/source/templates/gcc/startup_sam3sd8.o
+Script                                            src/zeppelin_fc.o
 Sensor                                            src/stdio_usb_example.o
-SysTick_Handler                                   src/zepplin_fc.o
+SysTick_Handler                                   src/zeppelin_fc.o
                                                   src/asf/sam/utils/cmsis/sam3s8/source/templates/exceptions.o
                                                   src/asf/sam/utils/cmsis/sam3s8/source/templates/gcc/startup_sam3sd8.o
 SystemCoreClock                                   src/asf/sam/utils/cmsis/sam3s8/source/templates/system_sam3sd8.o
@@ -3889,20 +3871,16 @@ UsageFault_Handler                                src/asf/sam/utils/cmsis/sam3s8
                                                   src/asf/sam/utils/cmsis/sam3s8/source/templates/gcc/startup_sam3sd8.o
 WDT_Handler                                       src/asf/sam/utils/cmsis/sam3s8/source/templates/exceptions.o
                                                   src/asf/sam/utils/cmsis/sam3s8/source/templates/gcc/startup_sam3sd8.o
-ZP_Close                                          src/zepplin_fc.o
+ZP_Button                                         src/zeppelin_fc.o
+ZP_ButtonHandler                                  src/zeppelin_fc.o
+ZP_CreateLogFile                                  src/zeppelin_fc.o
+ZP_Init                                           src/zeppelin_fc.o
                                                   src/stdio_usb_example.o
-ZP_CreateFile                                     src/zepplin_fc.o
+ZP_Loop                                           src/zeppelin_fc.o
                                                   src/stdio_usb_example.o
-ZP_WriteToFile                                    src/zepplin_fc.o
-Zepplin_Button                                    src/zepplin_fc.o
-Zepplin_ButtonHandler                             src/zepplin_fc.o
-Zepplin_Init                                      src/zepplin_fc.o
-                                                  src/stdio_usb_example.o
-Zepplin_Loop                                      src/zepplin_fc.o
-                                                  src/stdio_usb_example.o
-Zepplin_Scan_Scripts                              src/zepplin_fc.o
-Zepplin_SendPacket                                src/stdio_usb_example.o
-Zepplin_UpdateSensorData                          src/stdio_usb_example.o
+ZP_Scan_Scripts                                   src/zeppelin_fc.o
+ZP_SendPacket                                     src/stdio_usb_example.o
+ZP_UpdateSensorData                               src/stdio_usb_example.o
 _ITM_deregisterTMCloneTable                       c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/thumb/crtbegin.o
 _ITM_registerTMCloneTable                         c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/thumb/crtbegin.o
 _Jv_RegisterClasses                               c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/thumb/crtbegin.o
@@ -4245,13 +4223,13 @@ abort                                             c:/program files (x86)/atmel/a
 atexit                                            c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-atexit.o)
                                                   c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-__call_atexit.o)
                                                   c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb/crt0.o
-bTemp                                             src/zepplin_fc.o
+bTemp                                             src/zeppelin_fc.o
 board_init                                        src/asf/sam/boards/sam3s_ek/init.o
                                                   src/stdio_usb_example.o
-bw                                                src/zepplin_fc.o
+bw                                                src/zeppelin_fc.o
 cleanup_glue                                      c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-reent.o)
-die                                               src/zepplin_fc.o
-dir                                               src/zepplin_fc.o
+die                                               src/zeppelin_fc.o
+dir                                               src/zeppelin_fc.o
 disk_initialize                                   src/asf/thirdparty/fatfs/fatfs-port-r0.09/diskio.o
                                                   src/asf/thirdparty/fatfs/fatfs-r0.09/src/ff.o
 disk_ioctl                                        src/asf/thirdparty/fatfs/fatfs-port-r0.09/diskio.o
@@ -4295,31 +4273,34 @@ exit                                              c:/program files (x86)/atmel/a
                                                   c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb/crt0.o
 f_chmod                                           src/asf/thirdparty/fatfs/fatfs-r0.09/src/ff.o
 f_close                                           src/asf/thirdparty/fatfs/fatfs-r0.09/src/ff.o
-                                                  src/zepplin_fc.o
+                                                  src/zeppelin_fc.o
 f_getfree                                         src/asf/thirdparty/fatfs/fatfs-r0.09/src/ff.o
 f_gets                                            src/asf/thirdparty/fatfs/fatfs-r0.09/src/ff.o
+f_log                                             src/zeppelin_fc.o
 f_lseek                                           src/asf/thirdparty/fatfs/fatfs-r0.09/src/ff.o
 f_mkdir                                           src/asf/thirdparty/fatfs/fatfs-r0.09/src/ff.o
-                                                  src/zepplin_fc.o
+                                                  src/zeppelin_fc.o
 f_mount                                           src/asf/thirdparty/fatfs/fatfs-r0.09/src/ff.o
-                                                  src/zepplin_fc.o
+                                                  src/zeppelin_fc.o
 f_open                                            src/asf/thirdparty/fatfs/fatfs-r0.09/src/ff.o
-                                                  src/zepplin_fc.o
+                                                  src/zeppelin_fc.o
 f_opendir                                         src/asf/thirdparty/fatfs/fatfs-r0.09/src/ff.o
-                                                  src/zepplin_fc.o
+                                                  src/zeppelin_fc.o
 f_printf                                          src/asf/thirdparty/fatfs/fatfs-r0.09/src/ff.o
 f_putc                                            src/asf/thirdparty/fatfs/fatfs-r0.09/src/ff.o
 f_puts                                            src/asf/thirdparty/fatfs/fatfs-r0.09/src/ff.o
+                                                  src/zeppelin_fc.o
 f_read                                            src/asf/thirdparty/fatfs/fatfs-r0.09/src/ff.o
 f_readdir                                         src/asf/thirdparty/fatfs/fatfs-r0.09/src/ff.o
 f_rename                                          src/asf/thirdparty/fatfs/fatfs-r0.09/src/ff.o
+f_script                                          src/zeppelin_fc.o
 f_stat                                            src/asf/thirdparty/fatfs/fatfs-r0.09/src/ff.o
 f_sync                                            src/asf/thirdparty/fatfs/fatfs-r0.09/src/ff.o
 f_truncate                                        src/asf/thirdparty/fatfs/fatfs-r0.09/src/ff.o
 f_unlink                                          src/asf/thirdparty/fatfs/fatfs-r0.09/src/ff.o
 f_utime                                           src/asf/thirdparty/fatfs/fatfs-r0.09/src/ff.o
 f_write                                           src/asf/thirdparty/fatfs/fatfs-r0.09/src/ff.o
-                                                  src/zepplin_fc.o
+                                                  src/zeppelin_fc.o
 fclose                                            c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-fclose.o)
                                                   c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-findfp.o)
 ff_convert                                        src/asf/thirdparty/fatfs/fatfs-r0.09/src/option/ccsbcs.o
@@ -4327,8 +4308,8 @@ ff_convert                                        src/asf/thirdparty/fatfs/fatfs
 ff_wtoupper                                       src/asf/thirdparty/fatfs/fatfs-r0.09/src/option/ccsbcs.o
                                                   src/asf/thirdparty/fatfs/fatfs-r0.09/src/ff.o
 fflush                                            c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-fflush.o)
-file_name                                         src/zepplin_fc.o
-file_object                                       src/zepplin_fc.o
+file_name                                         src/zeppelin_fc.o
+file_object                                       src/zeppelin_fc.o
 fiprintf                                          c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-fiprintf.o)
                                                   c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-assert.o)
 flash_clear_gpnvm                                 src/asf/sam/services/flash_efc/flash_efc.o
@@ -4351,11 +4332,11 @@ flash_set_wait_state                              src/asf/sam/services/flash_efc
 flash_set_wait_state_adaptively                   src/asf/sam/services/flash_efc/flash_efc.o
 flash_unlock                                      src/asf/sam/services/flash_efc/flash_efc.o
 flash_write                                       src/asf/sam/services/flash_efc/flash_efc.o
-fno                                               src/zepplin_fc.o
+fno                                               src/zeppelin_fc.o
 fputwc                                            c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-fputwc.o)
 free                                              c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-malloc.o)
                                                   c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-__call_atexit.o)
-fs                                                src/zepplin_fc.o
+fs                                                src/zeppelin_fc.o
 g_interrupt_enabled                               src/asf/common/utils/interrupt/interrupt_sam_nvic.o
                                                   src/stdio_usb_example.o
                                                   src/asf/sam/drivers/udp/udp_device.o
@@ -4400,7 +4381,7 @@ hsmci_wait_end_of_write_blocks                    src/asf/sam/drivers/hsmci/hsmc
 hsmci_write_word                                  src/asf/sam/drivers/hsmci/hsmci.o
 link                                              src/asf/sam/utils/syscalls/gcc/syscalls.o
 localeconv                                        c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-locale.o)
-log                                               src/zepplin_fc.o
+log                                               src/zeppelin_fc.o
 main                                              src/stdio_usb_example.o
                                                   src/asf/sam/utils/cmsis/sam3s8/source/templates/gcc/startup_sam3sd8.o
                                                   c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb/crt0.o
@@ -4433,7 +4414,7 @@ memory_2_ram                                      src/asf/common/services/storag
                                                   src/asf/thirdparty/fatfs/fatfs-port-r0.09/diskio.o
 memset                                            c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-memset.o)
                                                   c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-findfp.o)
-                                                  src/zepplin_fc.o
+                                                  src/zeppelin_fc.o
                                                   src/I2CdevWrapper.o
                                                   c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb/crt0.o
 mmc_trans_multipliers                             src/asf/common/components/memory/sd_mmc/sd_mmc.o
@@ -4592,13 +4573,13 @@ portable_delay_cycles                             src/asf/common/services/delay/
 printf                                            c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-printf.o)
                                                   src/asf/sam/utils/syscalls/gcc/syscalls.o
                                                   src/asf/common/components/memory/sd_mmc/sd_mmc.o
-                                                  src/zepplin_fc.o
+                                                  src/zeppelin_fc.o
 ptr_get                                           src/asf/common/utils/stdio/stdio_usb/stdio_usb.o
                                                   src/asf/common/utils/stdio/read.o
 ptr_put                                           src/asf/common/utils/stdio/write.o
                                                   src/asf/common/utils/stdio/stdio_usb/stdio_usb.o
 puts                                              c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-puts.o)
-                                                  src/zepplin_fc.o
+                                                  src/zeppelin_fc.o
 pwm_channel_disable                               src/asf/sam/drivers/pwm/pwm.o
 pwm_channel_disable_interrupt                     src/asf/sam/drivers/pwm/pwm.o
 pwm_channel_enable                                src/asf/sam/drivers/pwm/pwm.o
@@ -4642,7 +4623,7 @@ raise                                             c:/program files (x86)/atmel/a
                                                   c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-abort.o)
 ram_2_memory                                      src/asf/common/services/storage/ctrl_access/ctrl_access.o
                                                   src/asf/thirdparty/fatfs/fatfs-port-r0.09/diskio.o
-res                                               src/zepplin_fc.o
+res                                               src/zeppelin_fc.o
 restore_core_regs                                 c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/thumb\libgcc.a(libunwind.o)
                                                   c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/thumb\libgcc.a(unwind-arm.o)
 rtc_clear_data_alarm                              src/asf/sam/drivers/rtc/rtc.o
@@ -4668,14 +4649,14 @@ rtc_set_time_alarm                                src/asf/sam/drivers/rtc/rtc.o
 rtc_set_waveform                                  src/asf/sam/drivers/rtc/rtc.o
 sd_mmc_check                                      src/asf/common/components/memory/sd_mmc/sd_mmc.o
                                                   src/sd_mmc_mem.o
-                                                  src/zepplin_fc.o
+                                                  src/zeppelin_fc.o
 sd_mmc_get_capacity                               src/asf/common/components/memory/sd_mmc/sd_mmc.o
                                                   src/sd_mmc_mem.o
 sd_mmc_get_type                                   src/asf/common/components/memory/sd_mmc/sd_mmc.o
                                                   src/sd_mmc_mem.o
 sd_mmc_get_version                                src/asf/common/components/memory/sd_mmc/sd_mmc.o
 sd_mmc_init                                       src/asf/common/components/memory/sd_mmc/sd_mmc.o
-                                                  src/zepplin_fc.o
+                                                  src/zeppelin_fc.o
 sd_mmc_init_read_blocks                           src/asf/common/components/memory/sd_mmc/sd_mmc.o
                                                   src/sd_mmc_mem.o
 sd_mmc_init_write_blocks                          src/asf/common/components/memory/sd_mmc/sd_mmc.o
@@ -4704,7 +4685,7 @@ sd_mmc_start_read_blocks                          src/asf/common/components/memo
 sd_mmc_start_write_blocks                         src/asf/common/components/memory/sd_mmc/sd_mmc.o
                                                   src/sd_mmc_mem.o
 sd_mmc_test_unit_ready                            src/sd_mmc_mem.o
-                                                  src/zepplin_fc.o
+                                                  src/zeppelin_fc.o
 sd_mmc_test_unit_ready_0                          src/sd_mmc_mem.o
                                                   src/asf/common/services/storage/ctrl_access/ctrl_access.o
 sd_mmc_test_unit_ready_1                          src/sd_mmc_mem.o
@@ -4728,7 +4709,7 @@ sleepmgr_locks                                    src/asf/sam/drivers/udp/udp_de
                                                   src/asf/common/services/sleepmgr/sam/sleepmgr.o
 software_init_hook                                c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb/crt0.o
 start                                             c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb/crt0.o
-status                                            src/zepplin_fc.o
+status                                            src/zeppelin_fc.o
 stdio_base                                        src/asf/common/utils/stdio/write.o
                                                   src/asf/common/utils/stdio/stdio_usb/stdio_usb.o
                                                   src/asf/common/utils/stdio/read.o
@@ -4757,8 +4738,8 @@ sysclk_set_prescalers                             src/asf/common/services/clock/
 sysclk_set_source                                 src/asf/common/services/clock/sam3s/sysclk.o
 system_init_flash                                 src/asf/sam/utils/cmsis/sam3s8/source/templates/system_sam3sd8.o
                                                   src/asf/common/services/clock/sam3s/sysclk.o
-test_file_name                                    src/zepplin_fc.o
-tick                                              src/zepplin_fc.o
+test_file_name                                    src/zeppelin_fc.o
+tick                                              src/zeppelin_fc.o
 twi_disable_interrupt                             src/asf/sam/drivers/twi/twi.o
 twi_disable_master_mode                           src/asf/sam/drivers/twi/twi.o
 twi_disable_slave_mode                            src/asf/sam/drivers/twi/twi.o
@@ -4875,7 +4856,7 @@ udi_cdc_signal_framing_error                      src/asf/common/services/usb/cl
 udi_cdc_signal_overrun                            src/asf/common/services/usb/class/cdc/device/udi_cdc.o
 udi_cdc_signal_parity_error                       src/asf/common/services/usb/class/cdc/device/udi_cdc.o
 udi_cdc_write_buf                                 src/asf/common/services/usb/class/cdc/device/udi_cdc.o
-ul_ms_ticks                                       src/zepplin_fc.o
+ul_ms_ticks                                       src/zeppelin_fc.o
 vfiprintf                                         c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-vfiprintf.o)
 vfprintf                                          c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-vfprintf.o)
 wcrtomb                                           c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/armgcc/3.3.1.128/armgcctoolchain/bin/../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-wcrtomb.o)

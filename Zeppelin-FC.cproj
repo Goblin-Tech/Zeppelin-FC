@@ -13,7 +13,7 @@
     <OutputFileExtension>.elf</OutputFileExtension>
     <OutputDirectory>$(MSBuildProjectDirectory)\$(Configuration)</OutputDirectory>
     <AssemblyName>Zepplin-FC</AssemblyName>
-    <Name>Zepplin-FC</Name>
+    <Name>Zeppelin-FC</Name>
     <RootNamespace>Zepplin-FC</RootNamespace>
     <ToolchainFlavour>Native</ToolchainFlavour>
     <AsfVersion>3.5.0</AsfVersion>
@@ -1389,10 +1389,10 @@
     <Compile Include="src\MPU9150.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="src\zepplin_fc.c">
+    <Compile Include="src\zeppelin_fc.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="src\zepplin_fc.h">
+    <Compile Include="src\zeppelin_fc.h">
       <SubType>compile</SubType>
     </Compile>
     <None Include="src\asf.h">

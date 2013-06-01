@@ -3,7 +3,7 @@
 #include <board.h>
 #include <sysclk.h>
 #include <stdio_usb.h>
-#include "zepplin_fc.h"
+#include "zeppelin_fc.h"
 #include "MPU9150.h"
 #include "I2CdevWrapper.h"
 
@@ -42,7 +42,7 @@ static uint8_t Packet_Buffer[32];
 static uint8_t Packet_Buffer_Index = 0;
 
 
-void Zepplin_SendPacket(void)
+void ZP_SendPacket(void)
 {
 	uint8_t crc = 0;
 	putchar('+');
@@ -92,7 +92,7 @@ void Zepplin_SendPacket(void)
 
 uint16_t Sensor[9];
 
-void Zepplin_UpdateSensorData(void)
+void ZP_UpdateSensorData(void)
 {
 	MPU9150_getMotion9(&Sensor[ZP_Accel_X_B], &Sensor[ZP_Accel_Y_B], &Sensor[ZP_Accel_Z_B], &Sensor[ZP_Gyro_X_B], &Sensor[ZP_Gyro_Y_B], &Sensor[ZP_Gyro_Z_B], &Sensor[ZP_Mag_X_B], &Sensor[ZP_Mag_Y_B], &Sensor[ZP_Mag_Z_B]);
 	// Get Accel Data
@@ -122,12 +122,6 @@ void Zepplin_UpdateSensorData(void)
  */
 int main (void)
 {
-	/* Initialize basic board support features.
-	 * - Initialize system clock sources according to device-specific
-	 *   configuration parameters supplied in a conf_clock.h file.
-	 * - Set up GPIO and board-specific features using additional configuration
-	 *   parameters, if any, specified in a conf_board.h file.
-	 */
 	sysclk_init();
 	board_init();
 	
@@ -138,7 +132,13 @@ int main (void)
 
 	// Enable interrupts
 	cpu_irq_enable();
-
+	
+	/* Set direction and pullup on the given button IOPORT */
+	ioport_set_pin_dir(PIO_PA0_IDX, IOPORT_DIR_INPUT);
+	ioport_set_pin_mode(PIO_PA0_IDX, IOPORT_MODE_PULLUP);
+	if (!ioport_get_pin_level(PIO_PA0_IDX))
+	flash_clear_gpnvm(1);
+	
 	/* Call a local utility routine to initialize C-Library Standard I/O over
 	 * a USB CDC protocol. Tunable parameters in a conf_usb.h file must be
 	 * supplied to configure the USB device correctly.
@@ -147,38 +147,10 @@ int main (void)
 	
 	delay_s(5);
 	
+	ZP_Init();
 	
-	/* Set direction and pullup on the given button IOPORT */
-	ioport_set_pin_dir(PIO_PA0_IDX, IOPORT_DIR_INPUT);
-	ioport_set_pin_mode(PIO_PA0_IDX, IOPORT_MODE_PULLUP);
-	
-	
-	
-	Zepplin_Init();
-	
-	ZP_CreateFile();
-	ZP_Close();
-	
-	if (!ioport_get_pin_level(PIO_PA0_IDX))
-		flash_clear_gpnvm(1);
-
-	// Get and echo characters forever.
-
-	uint8_t ch;
-	ZP_Tick = 0;
-	MPU9150_initialize();
-	
-	
-	uint16_t ticki = 1;
 	while (true) {
-		//Zepplin_UpdateSensorData();
-		//ZP_WriteToFile(&Sensor);
-		//printf("Tick: %d\n", ticki);
-		//ticki++;
-		//if (ticki == 500 )
-		//	ZP_Close();
-		//Zepplin_SendPacket();
-		Zepplin_Loop();
+		ZP_Loop();
 	}
 }
 
