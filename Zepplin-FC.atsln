@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Atmel Studio Solution File, Format Version 11.00
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "Zepplin-FC", "Zepplin-FC.cproj", "{F7791147-397F-4CD7-85D7-32ABC1945609}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|ARM = Debug|ARM
+		Release|ARM = Release|ARM
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F7791147-397F-4CD7-85D7-32ABC1945609}.Debug|ARM.ActiveCfg = Debug|ARM
+		{F7791147-397F-4CD7-85D7-32ABC1945609}.Debug|ARM.Build.0 = Debug|ARM
+		{F7791147-397F-4CD7-85D7-32ABC1945609}.Release|ARM.ActiveCfg = Release|ARM
+		{F7791147-397F-4CD7-85D7-32ABC1945609}.Release|ARM.Build.0 = Release|ARM
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
