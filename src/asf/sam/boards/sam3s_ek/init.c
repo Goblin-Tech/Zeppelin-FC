@@ -49,7 +49,7 @@
 void board_init(void)
 {
 	/* Configure LED pins */
-	gpio_configure_pin(LED0_GPIO, LED0_FLAGS);
+	gpio_configure_pin(PIN_PWM_LED0_GPIO, PIN_PWM_LED0_FLAGS);
 	
 	gpio_configure_pin(TWI0_DATA_GPIO, TWI0_DATA_FLAGS);
 	gpio_configure_pin(TWI0_CLK_GPIO, TWI0_CLK_FLAGS);

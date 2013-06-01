@@ -122,6 +122,7 @@ C_SRCS +=  \
 ../src/asf/sam/utils/cmsis/sam3s8/source/templates/system_sam3sd8.c \
 ../src/I2CdevWrapper.c \
 ../src/MPU9150.c \
+../src/pwmb.c \
 ../src/rtc.c \
 ../src/zeppelin_fc.c \
 ../src/asf/common/components/memory/sd_mmc/sd_mmc.c \
@@ -170,6 +171,7 @@ src/asf/sam/utils/cmsis/sam3s8/source/templates/gcc/startup_sam3sd8.o \
 src/asf/sam/utils/cmsis/sam3s8/source/templates/system_sam3sd8.o \
 src/I2CdevWrapper.o \
 src/MPU9150.o \
+src/pwmb.o \
 src/rtc.o \
 src/zeppelin_fc.o \
 src/asf/common/components/memory/sd_mmc/sd_mmc.o \
@@ -212,6 +214,7 @@ src/asf/sam/utils/cmsis/sam3s8/source/templates/gcc/startup_sam3sd8.o \
 src/asf/sam/utils/cmsis/sam3s8/source/templates/system_sam3sd8.o \
 src/I2CdevWrapper.o \
 src/MPU9150.o \
+src/pwmb.o \
 src/rtc.o \
 src/zeppelin_fc.o \
 src/asf/common/components/memory/sd_mmc/sd_mmc.o \
@@ -254,6 +257,7 @@ src/asf/sam/utils/cmsis/sam3s8/source/templates/gcc/startup_sam3sd8.d \
 src/asf/sam/utils/cmsis/sam3s8/source/templates/system_sam3sd8.d \
 src/I2CdevWrapper.d \
 src/MPU9150.d \
+src/pwmb.d \
 src/rtc.d \
 src/zeppelin_fc.d \
 src/asf/common/components/memory/sd_mmc/sd_mmc.d \
@@ -296,6 +300,7 @@ src/asf/sam/utils/cmsis/sam3s8/source/templates/gcc/startup_sam3sd8.d \
 src/asf/sam/utils/cmsis/sam3s8/source/templates/system_sam3sd8.d \
 src/I2CdevWrapper.d \
 src/MPU9150.d \
+src/pwmb.d \
 src/rtc.d \
 src/zeppelin_fc.d \
 src/asf/common/components/memory/sd_mmc/sd_mmc.d \
@@ -338,6 +343,8 @@ ADDITIONAL_DEPENDENCIES:=
 OUTPUT_FILE_DEP:= ./makedep.mk
 
 # AVR32/GNU C Compiler
+
+
 
 
 

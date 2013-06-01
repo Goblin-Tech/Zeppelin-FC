@@ -124,8 +124,7 @@ src/I2CdevWrapper.d src/I2CdevWrapper.o: ../src/I2CdevWrapper.c \
  ../src/config/conf_access.h ../src/sd_mmc_mem.h \
  ../src/asf/sam/drivers/pdc/pdc.h ../src/asf/sam/drivers/pmc/sleep.h \
  ../src/asf/sam/drivers/pmc/pmc.h ../src/asf/sam/drivers/pwm/pwm.h \
- ../src/asf/sam/drivers/rtc/rtc.h \
- ../src/asf/common/components/memory/sd_mmc/sd_mmc.h \
+ ../src/rtc.h ../src/asf/common/components/memory/sd_mmc/sd_mmc.h \
  ../src/config/conf_sd_mmc.h \
  ../src/asf/common/services/sleepmgr/sam/sleepmgr.h \
  ../src/config/conf_sleepmgr.h \
@@ -420,7 +419,7 @@ c:\program\ files\ (x86)\atmel\atmel\ studio\ 6.0\extensions\atmel\armgcc\3.3.1.
 
 ../src/asf/sam/drivers/pwm/pwm.h:
 
-../src/asf/sam/drivers/rtc/rtc.h:
+../src/rtc.h:
 
 ../src/asf/common/components/memory/sd_mmc/sd_mmc.h:
 

@@ -9,6 +9,7 @@
 #include <asf.h>
 #include <string.h>
 #include "zeppelin_fc.h"
+#include "pwm.h"
 
 #define DEBUG
 
@@ -198,11 +199,15 @@ void ZP_ButtonHandler(void)
 	if (ZP_Button())
 	{
 		if (b_ms > 50 && b_ms < 2000)
+		{
 			printf("Change Script\n");
+			Beep(1);
+		}			
 		
 		if (b_ms > 2000 && b_ms < 5000)
 		{
 			printf("Arm Rocket\n");
+			Beep(2);
 			ZP_CreateLogFile();
 		}
 			

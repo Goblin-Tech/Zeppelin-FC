@@ -1406,6 +1406,12 @@
     <Compile Include="src\MPU9150.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="src\pwmb.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\pwmb.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="src\rtc.c">
       <SubType>compile</SubType>
     </Compile>

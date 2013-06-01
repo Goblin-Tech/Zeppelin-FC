@@ -18,6 +18,8 @@ src\I2CdevWrapper.c
 
 src\MPU9150.c
 
+src\pwmb.c
+
 src\rtc.c
 
 src\zeppelin_fc.c

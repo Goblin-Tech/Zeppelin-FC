@@ -152,7 +152,7 @@ src/stdio_usb_example.d src/stdio_usb_example.o: \
  ../src/asf/common/services/usb/udc/udc_desc.h \
  ../src/asf/common/services/usb/udc/udi.h \
  ../src/asf/sam/drivers/pio/pio_handler.h ../src/zeppelin_fc.h \
- ../src/MPU9150.h ../src/I2CdevWrapper.h ../src/rtc.h
+ ../src/MPU9150.h ../src/I2CdevWrapper.h ../src/rtc.h ../src/pwmb.h
 
 ../src/asf.h:
 
@@ -483,3 +483,5 @@ c:\program\ files\ (x86)\atmel\atmel\ studio\ 6.0\extensions\atmel\armgcc\3.3.1.
 ../src/I2CdevWrapper.h:
 
 ../src/rtc.h:
+
+../src/pwmb.h:
