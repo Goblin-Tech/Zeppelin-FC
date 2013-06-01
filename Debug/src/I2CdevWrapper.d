@@ -1,5 +1,6 @@
 src/I2CdevWrapper.d src/I2CdevWrapper.o: ../src/I2CdevWrapper.c \
- ../src/I2CdevWrapper.h ../src/asf.h ../src/asf/sam/utils/compiler.h \
+ ../src/I2CdevWrapper.h ../src/asf.h \
+ ../src/asf/sam/drivers/chipid/chipid.h ../src/asf/sam/utils/compiler.h \
  c:\program\ files\ (x86)\atmel\atmel\ studio\ 6.0\extensions\atmel\armgcc\3.3.1.128\armgcctoolchain\bin\../lib/gcc/arm-none-eabi/4.7.0/include/stddef.h \
  ../src/asf/common/utils/parts.h \
  ../src/asf/sam/utils/preprocessor/preprocessor.h \
@@ -156,6 +157,8 @@ src/I2CdevWrapper.d src/I2CdevWrapper.o: ../src/I2CdevWrapper.c \
 ../src/I2CdevWrapper.h:
 
 ../src/asf.h:
+
+../src/asf/sam/drivers/chipid/chipid.h:
 
 ../src/asf/sam/utils/compiler.h:
 

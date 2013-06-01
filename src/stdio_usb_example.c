@@ -6,6 +6,7 @@
 #include "zeppelin_fc.h"
 #include "MPU9150.h"
 #include "I2CdevWrapper.h"
+#include "rtc.h"
 
 /* PWM frequency in Hz */
 #define PWM_FREQUENCY      1000
@@ -125,6 +126,16 @@ int main (void)
 	sysclk_init();
 	board_init();
 	
+	/* Default RTC configuration, 12-hour mode */
+	rtc_set_hour_mode(RTC, 1);
+	
+	/* Configure RTC interrupts */
+	NVIC_DisableIRQ(RTC_IRQn);
+	NVIC_ClearPendingIRQ(RTC_IRQn);
+	NVIC_SetPriority(RTC_IRQn, 0);
+	NVIC_EnableIRQ(RTC_IRQn);
+	rtc_enable_interrupt(RTC, RTC_IER_SECEN | RTC_IER_ALREN);
+	
 	gpio_configure_pin(PIO_PB13_IDX, (PIO_OUTPUT_1 | PIO_DEFAULT));
 	gpio_set_pin_high(PIO_PB13_IDX);
 	// Initialize interrupt vector table support.
@@ -147,10 +158,12 @@ int main (void)
 	
 	delay_s(5);
 	
-	ZP_Init();
 	
+	ZP_Init();
+	ZP_CreateLogFile();
+
 	while (true) {
-		ZP_Loop();
+		//ZP_Loop();
 	}
 }
 

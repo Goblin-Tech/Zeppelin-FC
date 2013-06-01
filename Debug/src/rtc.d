@@ -1,4 +1,4 @@
-src/zeppelin_fc.d src/zeppelin_fc.o: ../src/zeppelin_fc.c ../src/asf.h \
+src/rtc.d src/rtc.o: ../src/rtc.c ../src/asf.h \
  ../src/asf/sam/drivers/chipid/chipid.h ../src/asf/sam/utils/compiler.h \
  c:\program\ files\ (x86)\atmel\atmel\ studio\ 6.0\extensions\atmel\armgcc\3.3.1.128\armgcctoolchain\bin\../lib/gcc/arm-none-eabi/4.7.0/include/stddef.h \
  ../src/asf/common/utils/parts.h \
@@ -150,10 +150,7 @@ src/zeppelin_fc.d src/zeppelin_fc.o: ../src/zeppelin_fc.c ../src/asf.h \
  ../src/asf/common/services/usb/udc/udd.h \
  ../src/asf/common/services/usb/udc/udc_desc.h \
  ../src/asf/common/services/usb/udc/udi.h \
- ../src/asf/sam/drivers/pio/pio_handler.h \
- c:\program\ files\ (x86)\atmel\atmel\ studio\ 6.0\extensions\atmel\armgcc\3.3.1.128\armgcctoolchain\bin\../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/include/string.h \
- c:\program\ files\ (x86)\atmel\atmel\ studio\ 6.0\extensions\atmel\armgcc\3.3.1.128\armgcctoolchain\bin\../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/include/sys/string.h \
- ../src/zeppelin_fc.h
+ ../src/asf/sam/drivers/pio/pio_handler.h ../src/rtc.h
 
 ../src/asf.h:
 
@@ -477,8 +474,4 @@ c:\program\ files\ (x86)\atmel\atmel\ studio\ 6.0\extensions\atmel\armgcc\3.3.1.
 
 ../src/asf/sam/drivers/pio/pio_handler.h:
 
-c:\program\ files\ (x86)\atmel\atmel\ studio\ 6.0\extensions\atmel\armgcc\3.3.1.128\armgcctoolchain\bin\../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/include/string.h:
-
-c:\program\ files\ (x86)\atmel\atmel\ studio\ 6.0\extensions\atmel\armgcc\3.3.1.128\armgcctoolchain\bin\../lib/gcc/arm-none-eabi/4.7.0/../../../../arm-none-eabi/include/sys/string.h:
-
-../src/zeppelin_fc.h:
+../src/rtc.h:

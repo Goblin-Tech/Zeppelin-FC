@@ -2,6 +2,8 @@
 # Automatically-generated file. Do not edit or delete the file
 ################################################################################
 
+src\asf\sam\drivers\chipid\chipid.c
+
 src\asf\sam\drivers\pwm\pwm.c
 
 src\asf\sam\drivers\twi\twi.c
@@ -15,6 +17,8 @@ src\asf\sam\utils\cmsis\sam3s8\source\templates\system_sam3sd8.c
 src\I2CdevWrapper.c
 
 src\MPU9150.c
+
+src\rtc.c
 
 src\zeppelin_fc.c
 

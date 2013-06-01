@@ -1,5 +1,6 @@
 src/stdio_usb_example.d src/stdio_usb_example.o: \
- ../src/stdio_usb_example.c ../src/asf.h ../src/asf/sam/utils/compiler.h \
+ ../src/stdio_usb_example.c ../src/asf.h \
+ ../src/asf/sam/drivers/chipid/chipid.h ../src/asf/sam/utils/compiler.h \
  c:\program\ files\ (x86)\atmel\atmel\ studio\ 6.0\extensions\atmel\armgcc\3.3.1.128\armgcctoolchain\bin\../lib/gcc/arm-none-eabi/4.7.0/include/stddef.h \
  ../src/asf/common/utils/parts.h \
  ../src/asf/sam/utils/preprocessor/preprocessor.h \
@@ -123,8 +124,7 @@ src/stdio_usb_example.d src/stdio_usb_example.o: \
  ../src/config/conf_access.h ../src/sd_mmc_mem.h \
  ../src/asf/sam/drivers/pdc/pdc.h ../src/asf/sam/drivers/pmc/sleep.h \
  ../src/asf/sam/drivers/pmc/pmc.h ../src/asf/sam/drivers/pwm/pwm.h \
- ../src/asf/sam/drivers/rtc/rtc.h \
- ../src/asf/common/components/memory/sd_mmc/sd_mmc.h \
+ ../src/rtc.h ../src/asf/common/components/memory/sd_mmc/sd_mmc.h \
  ../src/config/conf_sd_mmc.h \
  ../src/asf/common/services/sleepmgr/sam/sleepmgr.h \
  ../src/config/conf_sleepmgr.h \
@@ -152,9 +152,11 @@ src/stdio_usb_example.d src/stdio_usb_example.o: \
  ../src/asf/common/services/usb/udc/udc_desc.h \
  ../src/asf/common/services/usb/udc/udi.h \
  ../src/asf/sam/drivers/pio/pio_handler.h ../src/zeppelin_fc.h \
- ../src/MPU9150.h ../src/I2CdevWrapper.h
+ ../src/MPU9150.h ../src/I2CdevWrapper.h ../src/rtc.h
 
 ../src/asf.h:
+
+../src/asf/sam/drivers/chipid/chipid.h:
 
 ../src/asf/sam/utils/compiler.h:
 
@@ -416,7 +418,7 @@ c:\program\ files\ (x86)\atmel\atmel\ studio\ 6.0\extensions\atmel\armgcc\3.3.1.
 
 ../src/asf/sam/drivers/pwm/pwm.h:
 
-../src/asf/sam/drivers/rtc/rtc.h:
+../src/rtc.h:
 
 ../src/asf/common/components/memory/sd_mmc/sd_mmc.h:
 
@@ -479,3 +481,5 @@ c:\program\ files\ (x86)\atmel\atmel\ studio\ 6.0\extensions\atmel\armgcc\3.3.1.
 ../src/MPU9150.h:
 
 ../src/I2CdevWrapper.h:
+
+../src/rtc.h:

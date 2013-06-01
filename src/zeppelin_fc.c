@@ -177,7 +177,7 @@ while (1) {}
 	
 	
 	printf("Open Script\n");
-	f_open(&f_script, "0:script.bin", FA_OPEN_EXISTING | FA_READ);
+	//f_open(&f_script, "0:script.bin", FA_OPEN_EXISTING | FA_READ);
 	
 }
 
@@ -186,18 +186,7 @@ void ZP_Loop(void)
 	ZP_ButtonHandler();
 }
 
-void ZP_CreateLogFile(void)
-{
-	f_open(&f_log, "0:Logfile.bin", FA_CREATE_ALWAYS | FA_WRITE);
-	f_puts("Goblin-Tech", &f_log);
-	f_puts("GT101-0001", &f_log);
-	f_puts("00.00.00", &f_log);
-	uint16_t size = f_size(&f_script);
-	uint8_t dummy;
-	f_write(&f_log, &size, 2, &dummy);
-	f_write(&f_log, &Script, size, &dummy);
-	f_close(&f_log);
-}
+
 
 
 static uint32_t b_ms = 0;
@@ -262,4 +251,37 @@ bool ZP_Button(void)
 		}
 	}
 	return false;
+}
+
+
+//////////////////////////////////////////
+// Clean Code
+//////////////////////////////////////////
+
+void ZP_CreateLogFile(void)
+{
+	char file[50];
+	uint32_t ul_hour, ul_minute, ul_second;
+	uint32_t ul_year, ul_month, ul_day, ul_week;
+	rtc_get_time(RTC, &ul_hour, &ul_minute, &ul_second);
+	rtc_get_date(RTC, &ul_year, &ul_month, &ul_day, &ul_week);
+	
+	f_mkdir("0:Logs");
+	sprintf(file, "0:logs/%04u", ul_year);
+	f_mkdir((char const *)file);
+	sprintf(file, "0:logs/%04u/%02u", ul_year, ul_month);
+	f_mkdir((char const *)file);
+	sprintf(file, "0:logs/%04u/%02u/%02u", ul_year, ul_month, ul_day);
+	f_mkdir((char const *)file);
+	
+	sprintf(file, "0:Logs/%04u/%02u/%02u/Flight_Log_%02u.%02u.%02u.log", ul_year, ul_month, ul_day, ul_hour, ul_minute, ul_second);
+	f_open(&f_log, (char const *)file, FA_CREATE_ALWAYS | FA_WRITE);
+	f_puts("Goblin-Tech", &f_log);
+	f_puts("GT101-0001", &f_log);
+	f_puts("00.00.00", &f_log);
+	uint16_t size = f_size(&f_script);
+	uint8_t dummy;
+	f_write(&f_log, &size, 2, &dummy);
+	f_write(&f_log, &Script, size, &dummy);
+	f_sync(&f_log);
 }
