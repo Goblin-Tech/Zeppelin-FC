@@ -192,6 +192,7 @@ void ZP_Loop(void)
 
 static uint32_t b_ms = 0;
 static bool b_bool;
+static bool aa = true;
 
 void ZP_ButtonHandler(void)
 {
@@ -200,24 +201,29 @@ void ZP_ButtonHandler(void)
 	{
 		if (b_ms > 50 && b_ms < 2000)
 		{
-			printf("Change Script\n");
+			//printf("Change Script\n");
 			Beep(1);
 		}			
 		
 		if (b_ms > 2000 && b_ms < 5000)
 		{
-			printf("Arm Rocket\n");
+			//printf("Arm Rocket\n");
 			Beep(2);
 			ZP_CreateLogFile();
 		}
-			
+		aa= true;	
 	}
 	else
 	/* Get time from Button Down */
 	{
 		if (b_ms > 2000 && b_ms < 5000)
 		{
-			printf("Arm Beep\n");
+			if (aa)
+			{
+				Beep(1);
+				aa = false;
+			}
+			//printf("Arm Beep\n");
 		}
 		
 		if (b_ms > 5000)

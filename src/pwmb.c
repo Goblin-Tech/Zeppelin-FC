@@ -54,6 +54,8 @@ void PWM_init(void)
 	/////////////////
 }
 
+static uint16_t temp = 500;
+int t = 0;
 void PWM_Handler(void)
 {
 	uint32_t events = pwm_channel_get_interrupt_status(PWM);
@@ -70,13 +72,18 @@ void PWM_Handler(void)
 	
 	if (pwm_state == 2)
 	{
-		if(pwm_count > 500 && pwm_count < 1000)
+		if(pwm_count > temp && pwm_count < temp * 2)
 			pwm_channel_update_duty(PWM, &g_pwm_channel_led, 50);
 		else
 			pwm_channel_update_duty(PWM, &g_pwm_channel_led, 0);
 		
-		if (pwm_count > 1000)
+		if (pwm_count > temp * 2)
 			pwm_count = 0;
+		if (t++ > 100)
+		{
+			t = 0;
+			temp--;	
+		}			
 	}
 }
 
@@ -90,4 +97,48 @@ void Beep(uint8_t mode)
 		case 0x02: pwm_state = 2; break;
 		case 0x03: pwm_state = 3; break;
 	}
+}
+
+
+
+void playNote(uint16_t n, uint16_t d)
+{
+	/////////////////
+	/* Enable PWM peripheral clock */
+	pmc_enable_periph_clk(ID_PWM);
+	
+	/* Disable PWM channels for LEDs */
+	pwm_channel_disable(PWM, PIN_PWM_LED0_CHANNEL);
+	
+	/* Set PWM clock A as PWM_FREQUENCY * PERIOD_VALUE (clock B is not used) */
+	pwm_clock_t clock_setting = {
+		.ul_clka = n,
+		.ul_clkb = 0,
+		.ul_mck = sysclk_get_cpu_hz()
+	};
+	pwm_init(PWM, &clock_setting);
+	
+	/* Initialize PWM channel for LED0 (period is left-aligned and output waveform starts at a low level) */
+	g_pwm_channel_led.ul_prescaler = PWM_CMR_CPRE_CLKA;  /* Use PWM clock A as source clock */
+	g_pwm_channel_led.ul_period = 100;  /* Period value of output waveform */
+	g_pwm_channel_led.ul_duty = 50;  /* Duty cycle value of output waveform */
+	g_pwm_channel_led.channel = PIN_PWM_LED0_CHANNEL;
+	pwm_channel_init(PWM, &g_pwm_channel_led);
+
+	/* Enable channel counter event interrupt */
+	pwm_channel_enable_interrupt(PWM, PIN_PWM_LED0_CHANNEL, 0);
+
+	/* Configure interrupt and enable PWM interrupt */
+
+	NVIC_DisableIRQ(PWM_IRQn);
+	NVIC_ClearPendingIRQ(PWM_IRQn);
+	NVIC_SetPriority(PWM_IRQn, 0);
+	NVIC_EnableIRQ(PWM_IRQn);
+
+	/* Enable PWM channels for LEDs */
+	pwm_channel_enable(PWM, PIN_PWM_LED0_CHANNEL);
+	delay_ms(d);
+	pmc_disable_periph_clk(ID_PWM);
+	delay_ms(d);
+	/////////////////
 }

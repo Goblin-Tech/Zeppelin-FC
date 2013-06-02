@@ -9,7 +9,14 @@
 #include "rtc.h"
 #include "pwmb.h"
 
+#define N_E 165000
+#define N_G 196000
+#define N_B 247000
+#define N_E2 300000
+#define N_C 261000
+#define N_D 294000
 
+void BootupTone(void);
 
 /**
  * \brief main function
@@ -53,18 +60,26 @@ int main (void)
 	stdio_usb_init();
 	
 	
-	PWM_init();
-	Beep(0);
-	
-	
-	delay_s(5);
+	delay_s(3);
 	
 	
 	ZP_Init();
-	ZP_CreateLogFile();
-
+	BootupTone();
+	PWM_init();
 	while (true) {
+		
 		ZP_Loop();
 	}
 }
 
+
+
+
+
+
+void BootupTone(void)
+{
+	playNote(N_E, 100);
+	playNote(N_G, 100);
+	playNote(N_B, 100);
+}

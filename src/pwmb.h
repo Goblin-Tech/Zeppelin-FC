@@ -23,5 +23,6 @@ static uint8_t pwm_state;
 
 void PWM_init(void);
 void Beep(uint8_t mode);
+void playNote(uint16_t n, uint16_t d);
 
 #endif /* PWM_H_ */
